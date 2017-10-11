@@ -1,0 +1,88 @@
+@import '_variables';
+
+/*--------------------------------------------------------------------------
+   html
+---------------------------------------------------------------------------*/
+html {
+	font-size: 62.5%;
+}
+
+
+
+
+/*--------------------------------------------------------------------------
+   body
+---------------------------------------------------------------------------*/
+body {
+	overflow: hidden;
+	width: 100%;
+	color: #343a40;
+	word-wrap: break-word;
+	word-break: break-all;
+	font-size: 1.3rem;
+	font-family: 'Poppins', Helvetica Neue, Helvetica, Hiragino Sans, 'ヒラギノ角ゴ ProN W3', Hiragino Kaku Gothic ProN, "メイリオ", Meiryo, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	line-height: 2;
+  letter-spacing: 1px;
+
+  @include mq(pc) {
+    font-size: 1.6rem;
+    line-height: 1.78;
+  }
+}
+
+
+
+
+/*--------------------------------------------------------------------------
+   a
+---------------------------------------------------------------------------*/
+a {
+	outline: none;
+	color: $link-text-color;
+	-webkit-tap-highlight-color: $link-tap-highlight-color;
+
+	&:link,
+	&:visited {
+		text-decoration: $link-text-decoration;
+	}
+}
+
+
+
+
+/*--------------------------------------------------------------------------
+   img
+---------------------------------------------------------------------------*/
+img {
+	vertical-align: top;
+}
+
+
+
+
+/*--------------------------------------------------------------------------
+   ul
+---------------------------------------------------------------------------*/
+ul {
+	list-style: none;
+}
+
+
+
+
+/*--------------------------------------------------------------------------
+   selection
+---------------------------------------------------------------------------*/
+::-moz-selection {
+	background-color: $selection-background-color;
+	color: $selection-text-color;
+	text-shadow: $selection-text-shadow;
+}
+
+::selection {
+	background-color: $selection-background-color;
+	color: $selection-text-color;
+	text-shadow: $selection-text-shadow;
+}

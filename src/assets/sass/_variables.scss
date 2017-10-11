@@ -1,0 +1,11 @@
+$breakpoints: (
+  'sp': 'screen and (max-width: 767px)',
+  'pc': 'screen and (min-width: 768px)',
+) !default;
+
+$link-text-color: #000;
+$link-tap-highlight-color: #000;
+$selection-background-color: #ccc;
+$selection-text-color: #ccc;
+$selection-text-shadow: #ccc;
+$link-text-decoration: none;

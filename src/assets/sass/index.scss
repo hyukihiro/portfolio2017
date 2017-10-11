@@ -1,1 +1,224 @@
 @charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,900');
+@import '_mixin.scss';
+@import '_base.scss';
+@import '_global.scss';
+
+
+// --------------------------------------------------------------------------
+//  index
+// --------------------------------------------------------------------------
+
+.index {
+  .main {
+    margin-top: 50px;
+
+    .lists {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .list {
+      position: relative;
+      width: 50%;
+      padding-top: 26.25%;
+      margin-bottom: 50px;
+
+      .image {
+        position: absolute;
+        left: 0;
+        top: 0;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+      }
+
+      .image > img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .content {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: calc(100% - 20px);
+        height: calc(100% - 20px);
+        transform: translate(-50%, -50%);
+        padding: 30px;
+        color: #fff;
+        background: rgba(0, 0, 0, .6);
+        opacity: 0;
+        transition: opacity .5s cubic-bezier(0.19, 1, 0.22, 1);
+      }
+
+      .content .name {
+        font-size: 2.0rem;
+      }
+
+      .content .skills {
+        padding-top: 5px;
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .content .skills li {
+        position: relative;
+        padding-right: 5px;
+        margin-right: 5px;
+        font-weight: 500;
+      }
+
+      .content .skills li::after {
+        content: ",";
+        position: absolute;
+        display: block;
+        right: 0;
+        bottom: 0;
+        margin: 0 auto auto auto;
+      }
+    }
+  }
+}
+
+/* hover
+--------------------------------------------------------------------------*/
+.index .main .list .content:hover {
+  opacity: 1;
+  transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+
+/* sp
+--------------------------------------------------------------------------*/
+@include mq(sp) {
+  .index {
+    .main {
+      margin-top: 20px;
+
+      .lists {
+        flex-direction: column;
+      }
+
+      .list {
+        width: 100%;
+        padding-top: 56.25%;
+        margin-bottom: 30px;
+
+        .image > img {
+          width: 100%;
+          height: auto;
+        }
+
+        .content {
+          width: calc(100% - 20px);
+          height: calc(100% - 20px);
+          transform: translate(-50%, -50%);
+          padding: 20px;
+          opacity: 1;
+          transition: none;
+        }
+
+        .content .name {
+          font-size: 1.6rem;
+        }
+
+        .content .skills li {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+/*--------------------------------------------------------------------------
+  about
+---------------------------------------------------------------------------*/
+.about {
+  .main {
+    // padding: 30px;
+  }
+
+  .introduction {
+    padding: 30px 30px 70px;
+  }
+
+  .meta__cat {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    font-size: 1.4rem;
+    font-weight: 300;
+  }
+
+  .meta__cat + .meta__cat {
+    margin-top: 5px;
+  }
+
+  .meta__item {
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .meta__item + .meta__item::after {
+    content: '/';
+    display: inline-block;
+    position: absolute;
+    left: 5px;
+    bottom: 0;
+  }
+
+  .prof {
+    padding-top: 60px;
+    line-height: 2.5;
+
+    .txt + .txt {
+      margin-top: 50px;
+    }
+  }
+
+  .sns {
+    display: flex;
+    align-items: center;
+    padding-top: 50px;
+
+    li + li {
+      padding-left: 30px;
+    }
+  }
+
+  .skills {
+    padding: 70px 30px;
+    background: #D8D8D8;
+
+    .skills__hdg {
+      font-weight: 500;
+      font-size: 2.8rem;
+    }
+
+    .categories {
+      margin-top: 20px;
+      display: flex;
+    }
+
+    .category {
+      &__hdg {
+        font-weight: 400;
+        font-size: 2.0rem;
+      }
+
+      .items {
+        padding-top: 10px;
+        font-size: 1.2rem;
+        line-height: 2.25;
+      }
+    }
+
+    .category + .category {
+      padding-left: 70px;
+    }
+  }
+}

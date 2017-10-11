@@ -1,0 +1,78 @@
+// --------------------------------------------------------------------------
+//  header
+// --------------------------------------------------------------------------
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+
+  &__brand {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+}
+
+@include mq(sp) {
+  .header {
+    padding: 15px 10px;
+
+    &__brand {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+
+// --------------------------------------------------------------------------
+//  footer
+// --------------------------------------------------------------------------
+.footer {
+  background: #000;
+  padding: 50px 30px;
+
+  .copy {
+    color: #fff;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__sns {
+    display: flex;
+    align-items: center;
+
+    .item {
+      padding-left: 30px;
+    }
+
+    .item a {
+      color:  #fff;
+    }
+  }
+}
+
+/* sp
+--------------------------------------------------------------------------*/
+@include mq(sp) {
+  .footer {
+    padding: 20px;
+
+    &__inner {
+      flex-direction: column-reverse;
+    }
+
+    &__sns {
+
+      .item {
+        padding: 0 10px;
+      }
+
+      .item a {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
