@@ -4,6 +4,7 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 30px;
 
   &__brand {
@@ -14,7 +15,7 @@
 
 @include mq(sp) {
   .header {
-    padding: 15px 10px;
+    padding: 15px 20px;
 
     &__brand {
       font-size: 1.4rem;
