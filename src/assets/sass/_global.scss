@@ -2,14 +2,24 @@
 //  header
 // --------------------------------------------------------------------------
 .header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px;
+  width: 100%;
 
   &__brand {
     font-size: 1.8rem;
     font-weight: 700;
+    margin: 30px 0 0 30px;
+  }
+
+  .toggle-wrapper {
+    margin: 30px 30px 0 0;
   }
 }
 
