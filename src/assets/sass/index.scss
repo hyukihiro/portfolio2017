@@ -175,7 +175,7 @@
 
   .meta__item .colon {
     padding: 0 3px;
-    animation: flashing 1s steps(8, start) infinite;
+    animation: flashing 2s steps(2, start) infinite;
   }
 
   .prof {
@@ -351,8 +351,13 @@
 
     &__item {
       width: 50%;
-      padding-right: 80px;
+      padding: 0 40px;
     }
+
+    &__list {
+      font-size: 1.4rem;
+    }
+
 
     &__unit + .details__unit {
       margin-top: 50px;
@@ -391,13 +396,17 @@
       line-height: 2.5;
     }
   }
+
+  .site-flow {
+  }
 }
 
 /* xl
 --------------------------------------------------------------------------*/
 @include mq(xl) {
   .works {
-    .details {
+    .details,
+    .site-flow {
       width: 140rem;
     }
   }
