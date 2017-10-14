@@ -6,19 +6,19 @@ export function date() {
   let minute = time.getMinutes();
 
   if ( minute < 10 ) {
-    minute = '0' + minute;    
+    minute = '0' + minute;
   }
 
   if ( hour < 10 ) {
-    hour = '0' + hour;    
+    hour = '0' + hour;
   }
 
   $('.meta__item .minute').html(hour);
   $('.meta__item .second').html(minute);
 
-  setInterval(function() {
-    date();
-  }, 60000)
+  // setInterval(function() {
+  //   date();
+  // }, 60000)
 }
 
 export function weather() {
@@ -31,8 +31,7 @@ export function weather() {
       $('.meta__cat--weather .meta__item').text(weather);
     },
     error: function() {
-    },
-    complete: function() {
+      aleer('Error requesting data')
     }
   });
 }

@@ -5,3 +5,14 @@
     @content;
   }
 }
+
+@mixin long-shadow-text ($distance, $blur, $color) {
+    $shadows: null;
+    $color: darken($color, 10);
+    $blur: $blur + px;
+   @for$i from 0 through $distance {
+        $dist: $i + px;
+        $shadows: append($shadows, ($dist $dist $blur $color), comma);
+    }
+    text-shadow: $shadows;
+}
