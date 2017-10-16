@@ -19,5 +19,19 @@
     "strip-spaces": true,
     "tab-size": true,
     "unitless-zero": true,
-    "vendor-prefix-align": true
+    "vendor-prefix-align": true,
+    "sort-order": [
+        [
+            "overflow",
+            "position",
+            "display",
+            "width",
+            "height",
+            "float",
+            "margin",
+            "padding",
+            "font",
+            "color",
+        ]
+    ]
 }
