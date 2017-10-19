@@ -414,7 +414,7 @@
         transform: translateY(100px);
       }
     }
-  }  
+  }
 }
 
 // --------------------------------------------------------------------------
@@ -435,26 +435,42 @@
   align-items: center;
   justify-content: center;
 
-  &__text {
+  &__parent {
+    position: relative;
     overflow: hidden;
     font-weight: 700;
     letter-spacing: 0;
   }
 
   &__chunk {
-    padding: 0 5px;    
+    padding: 0 5px;
+  }
+
+  &__line {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
   }
 }
 
 /* animation
 --------------------------------------------------------------------------*/
-.g-loading__text span {
-  display: inline-block;
-  // transform: translateY(20px);
-  // animation: 2s loadingText cubic-bezier(0.19, 1, 0.22, 1) infinite;
+.g-loading {
+  transform-origin: 0 0;
+  background: #ccc;
 }
 
+.g-loading__text {
+  display: inline-block;
+}
 
+.g-loading__line {
+  transform: scale(0, 0);
+  transform-origin: 0 100%;
+}
 
 // --------------------------------------------------------------------------
 //  footer
