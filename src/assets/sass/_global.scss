@@ -418,6 +418,45 @@
 }
 
 // --------------------------------------------------------------------------
+//  loading
+// --------------------------------------------------------------------------
+.g-loading {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 103;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__text {
+    overflow: hidden;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  &__chunk {
+    padding: 0 5px;    
+  }
+}
+
+/* animation
+--------------------------------------------------------------------------*/
+.g-loading__text span {
+  display: inline-block;
+  // transform: translateY(20px);
+  // animation: 2s loadingText cubic-bezier(0.19, 1, 0.22, 1) infinite;
+}
+
+
+
+// --------------------------------------------------------------------------
 //  footer
 // --------------------------------------------------------------------------
 .footer {

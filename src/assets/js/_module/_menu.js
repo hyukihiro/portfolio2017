@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import controller from './_controller';
 
 export default class Menu {
 
