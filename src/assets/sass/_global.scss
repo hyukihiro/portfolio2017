@@ -437,6 +437,7 @@
 
   &__parent {
     position: relative;
+    z-index: 104;
     overflow: hidden;
     font-weight: 700;
     letter-spacing: 0;
@@ -460,8 +461,33 @@
 --------------------------------------------------------------------------*/
 .g-loading {
   transform-origin: 0 0;
-  background: #ccc;
 }
+
+.g-loading__bg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  transform-origin: 0 0;
+  transform: translateY(101%);
+}
+
+.g-loading__bg--01 {
+  background: #07677C;
+  transform-origin: 0 0;
+  z-index: 103;
+}
+
+.g-loading__bg--02 {
+  background: #074272;
+  transform-origin: 0 0;
+  z-index: 102;
+}
+
 
 .g-loading__text {
   display: inline-block;

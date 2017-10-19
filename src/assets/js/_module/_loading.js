@@ -16,6 +16,7 @@ export default class Loading {
 		this._$parent = $('.js-loading-parent');
 		this._$letters = $('.js-loading-letter');
 		this._$line = $('.js-loading-line');
+		this._$bg = $('.js-loading-bg');
 		this._tl = null;
 
 		this._handleEvents();
@@ -45,7 +46,8 @@ export default class Loading {
 			ftl.add('sync')
 			ftl.to( this._$line, .2, { scaleY: 0, ease: props.ease, delay: .25, transformOrigin: '0 0'}, 'sync')
 			ftl.set( this._$letters, { autoAlpha: 0}, 'sync')
-			ftl.to( this._$wrapper, 1, { scaleY: 0, ease: props.ease})
+			ftl.staggerTo( this._$bg, 1, { y: 0, ease: props.ease}, .5)
+			ftl.to( this._$wrapper, 1, { scaleY: 0, ease: props.ease, delay: 0})
 		}, 4000);
 	}
 
