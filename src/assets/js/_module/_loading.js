@@ -39,15 +39,11 @@ export default class Loading {
 		setTimeout(() => {
 			this._tl.pause();
 			let ftl = new TimelineMax();
-			ftl.set( this._$line, { scaleY: .05})
-			ftl.to( this._$letters, .2, { y: 0	})
-			ftl.to( this._$line, .5, { scaleX: 1, scaleY: .05, ease: props.ease})
-			ftl.to( this._$line, .5, { scaleY: 1, ease: props.ease, delay: .5})
-			ftl.add('sync')
-			ftl.to( this._$line, .2, { scaleY: 0, ease: props.ease, delay: .25, transformOrigin: '0 0'}, 'sync')
-			ftl.set( this._$letters, { autoAlpha: 0}, 'sync')
-			ftl.staggerTo( this._$bg, 1, { y: 0, ease: props.ease}, .5)
-			ftl.to( this._$wrapper, 1, { scaleY: 0, ease: props.ease, delay: 0})
+			ftl.to( this._$letters, .2, { y: 0})
+			ftl.to( this._$line, .5, { scaleX: 1, ease: props.ease, delay: .5})
+			ftl.to( this._$letters, .4, { y: 22, ease: props.ease})
+			ftl.to( this._$line, .5, { scaleX: 0, ease: props.ease, transformOrigin: '100% 0'})
+			ftl.to( this._$wrapper, 1, { scaleX: 0, ease: props.ease, transformOrigin: '100% 0'})
 		}, 4000);
 	}
 
