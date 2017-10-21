@@ -25,10 +25,14 @@ export default class Loading {
 	}
 
 	_init() {
-		this._$body.imagesLoaded()
-		.done( function( instance ) {
-			controller.dispatchEvent({ type: 'domReady'});
-		});
+		if ( !sessionStorage.getItem('accessed')) {
+			this._$body.imagesLoaded()
+			.done( function( instance ) {
+				controller.dispatchEvent({ type: 'domReady'});
+			});
+		} else {
+			this._$wrapper.remove();
+		}
 	}
 
 	_handleEvents() {
@@ -45,6 +49,7 @@ export default class Loading {
 			ftl.to( this._$line, .5, { scaleX: 0, ease: props.ease, transformOrigin: '100% 0'})
 			ftl.to( this._$wrapper, 1, { scaleX: 0, ease: props.ease, transformOrigin: '100% 0'})
 		}, 4000);
+		sessionStorage.setItem('accessed', 'done');
 	}
 
 	_tween() {
