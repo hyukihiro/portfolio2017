@@ -93,8 +93,8 @@ export default class PageView {
 					type: 'modechange',
 					data: { mode: 'sp' }
 				});
-				_this._$html.removeClass(modeClass.sp);
-				_this._$html.addClass(modeClass.pc);
+				_this._$html.removeClass(modeClass.pc);
+				_this._$html.addClass(modeClass.sp);
 			} else {
 				controller.dispatchEvent({
 					type: 'modechange',

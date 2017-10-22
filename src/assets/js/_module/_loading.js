@@ -25,14 +25,10 @@ export default class Loading {
 	}
 
 	_init() {
-		if ( !sessionStorage.getItem('accessed')) {
-			this._$body.imagesLoaded()
-			.done( function( instance ) {
-				controller.dispatchEvent({ type: 'domReady'});
-			});
-		} else {
-			this._$wrapper.remove();
-		}
+		this._$body.imagesLoaded()
+		.done( function( instance ) {
+			controller.dispatchEvent({ type: 'domReady'});
+		});
 	}
 
 	_handleEvents() {
@@ -48,19 +44,18 @@ export default class Loading {
 			ftl.to( this._$letters, .4, { y: 22, ease: props.ease})
 			ftl.to( this._$line, .5, { scaleX: 0, ease: props.ease, transformOrigin: '100% 0'})
 			ftl.to( this._$wrapper, 1, { scaleX: 0, ease: props.ease, transformOrigin: '100% 0'})
-		}, 4000);
-		sessionStorage.setItem('accessed', 'done');
+		}, 2500);
 	}
 
 	_tween() {
 		this._tl = new TimelineMax();
 		this._tl.set( this._$letters, {	y: 30})
-		this._tl.staggerTo( this._$letters, .6, {
+		this._tl.staggerTo( this._$letters, .5, {
 			y: 0,
 			ease: props.ease,
 			yoyo: true,
 			repeat: -1,
-			repeatDelay: .75
+			repeatDelay: .8
 		}, .05);
 	}
 }
