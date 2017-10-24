@@ -44,7 +44,7 @@ export default class Loading {
 			ftl.to( this._$letters, .4, { y: 22, ease: props.ease})
 			ftl.to( this._$line, .5, { scaleX: 0, ease: props.ease, transformOrigin: '100% 0'})
 			ftl.to( this._$wrapper, 1, { scaleX: 0, ease: props.ease, transformOrigin: '100% 0'})
-		}, 2500);
+		}, 1200);
 	}
 
 	_tween() {
@@ -52,10 +52,7 @@ export default class Loading {
 		this._tl.set( this._$letters, {	y: 30})
 		this._tl.staggerTo( this._$letters, .5, {
 			y: 0,
-			ease: props.ease,
-			yoyo: true,
-			repeat: -1,
-			repeatDelay: .8
+			ease: props.ease
 		}, .05);
 	}
 }
