@@ -241,6 +241,10 @@
       background: #fff;
     }
 
+    .scroll__txt {
+      transform: translateY(20px);
+    }
+
     .bg {
       position: absolute;
       z-index: 0;
@@ -338,6 +342,18 @@
     }
   }
 }
+
+/* animation
+--------------------------------------------------------------------------*/
+.works .fv .scroll__txt {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all .5s cubic-bezier(0.19, 1, 0.22, 1) 1s;
+}
+
+/* hover
+--------------------------------------------------------------------------*/
+
 
 /* xl
 --------------------------------------------------------------------------*/
