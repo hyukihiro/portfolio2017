@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import controller from './_controller';
-import {TweenMax, Power2, TimelineLite} from 'gsap';
+import {TweenMax} from 'gsap';
 const imagesLoaded = require('imagesloaded');
 imagesLoaded.makeJQueryPlugin($);
 
