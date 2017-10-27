@@ -54,7 +54,15 @@ module.exports = [
         to: '../../assets/img'
       }]),
       new WebpackNotifierPlugin()
-    ]
+    ],
+
+    resolve: {
+
+      // aliasを追加
+      alias: {
+        'vue$': 'vue/dist/vue.esm.js'
+      },
+    },
   },
 
   // sass
