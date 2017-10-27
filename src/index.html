@@ -84,95 +84,17 @@
     </audio>
   <!-- menu --></div>
 
-  <main class="main">
-    <ul class="m-lists">
-      <li class="m-lists__item"><a href="">
-        <div class="image"><img src="/assets/img/work01.jpg" alt=""></div>
+  <main class="main" id="app">
+    <ul class="m-lists" v-if="posts && posts.length">
+      <li class="m-lists__item" v-for="post of posts"><a v-bind:href="post.link">
+        <div class="image"><img :src="post._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url" alt=""></div>
         <div class="content">
           <div class="txt">
-            <h2 class="name">Baika Kindergarten</h2>
+            <h2 class="name">{{post.title.rendered}}</h2>
             <ul class="skills">
-              <li>Sass</li>
-              <li>JS</li>
-              <li>Gulp</li>
-              <li>Bower</li>
-              <li>Animation</li>
-              <li>webpack</li>
+              <li>{{post.acf.technologies}}</li>
             </ul>
           </div>
-        <!-- content --></div>
-      </a><!-- m-lists__item --></li>
-
-      <li class="m-lists__item"><a href="">
-        <div class="image"><img src="/assets/img/work02.jpg" alt=""></div>
-        <div class="content">
-          <h2 class="name">GFC</h2>
-          <ul class="skills">
-            <li>Sass</li>
-            <li>JS</li>
-            <li>Gulp</li>
-            <li>Bower</li>
-            <li>Animation</li>
-            <li>webpack</li>
-          </ul>
-        <!-- content --></div>
-      </a><!-- m-lists__item --></li>
-
-      <li class="m-lists__item"><a href="">
-        <div class="image"><img src="/assets/img/work03.jpg" alt=""></div>
-        <div class="content">
-          <h2 class="name">Seiban</h2>
-          <ul class="skills">
-            <li>Sass</li>
-            <li>JS</li>
-            <li>Gulp</li>
-            <li>Bower</li>
-            <li>Animation</li>
-            <li>webpack</li>
-          </ul>
-        <!-- content --></div>
-      </a><!-- m-lists__item --></li>
-
-      <li class="m-lists__item"><a href="">
-        <div class="image"><img src="/assets/img/work04.jpg" alt=""></div>
-        <div class="content">
-          <h2 class="name">Eggplant</h2>
-          <ul class="skills">
-            <li>Sass</li>
-            <li>JS</li>
-            <li>Gulp</li>
-            <li>Bower</li>
-            <li>Animation</li>
-            <li>webpack</li>
-          </ul>
-        <!-- content --></div>
-      </a><!-- m-lists__item --></li>
-
-      <li class="m-lists__item"><a href="">
-        <div class="content">
-          <h2 class="name">Contigirls</h2>
-          <ul class="skills">
-            <li>Sass</li>
-            <li>JS</li>
-            <li>Gulp</li>
-            <li>Bower</li>
-            <li>Animation</li>
-            <li>webpack</li>
-          </ul>
-        <!-- content --></div>
-      </a><!-- m-lists__item --></li>
-
-      <li class="m-lists__item"><a href="">
-        <div class="content">
-          <h2 class="name">Sirmit</h2>
-          <ul class="skills">
-            <li>Sass</li>
-            <li>JS</li>
-            <li>Gulp</li>
-            <li>Bower</li>
-            <li>Animation</li>
-            <li>webpack</li>
-          </ul>
         <!-- content --></div>
       </a><!-- m-lists__item --></li>
     <!-- lists --></ul>
