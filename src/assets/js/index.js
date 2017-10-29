@@ -15,13 +15,14 @@ let app = new Vue({
   el: '#app',
 
   data: {
-    url: 'http://portfolio-wp.eggplant.work/',
+    source: 'http://portfolio-wp.eggplant.work/',
+    url: 'http://portfolio.eggplant.work/',
     posts: []
   },
 
   methods: {
     media: function(id){
-      axios.get(this.url+'/wp-json/wp/v2/media/'+id)
+      axios.get(this.source+'/wp-json/wp/v2/media/'+id)
       .then(response => {
         this.media = response.data
       })
@@ -35,7 +36,7 @@ let app = new Vue({
   created(){
 
     //postを取得
-    axios.get(this.url+'wp-json/wp/v2/posts?_embed')
+    axios.get(this.source+'wp-json/wp/v2/posts?_embed')
     .then(response => {
       this.posts = response.data;
     })
