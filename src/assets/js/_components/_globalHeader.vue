@@ -1,6 +1,6 @@
 <template>
 	<header class="header">
-	  <h1 class="header__brand"><a href="/">Yukihiro Hoshide</a></h1>
+	  <h1 class="header__brand"><router-link to="/" exact>Yukihiro Hoshide</router-link></h1>
 	  <div class="toggle">
 	    <span class="txt">
 	      <span data-letter="M">M</span>
@@ -11,5 +11,3 @@
 	  </div>
 	</header>
 </template>
-
-

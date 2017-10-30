@@ -9,7 +9,7 @@
   <title>Yukihiro Hoshide</title>
 </head>
 <body class="index">
-  <div id="app">  
+  <div id="app">
 
     <global-loading></global-loading>
 
@@ -17,8 +17,8 @@
 
     <global-menu></global-menu>
 
-    <router-view></router-view>
-    
+    <!-- <router-view></router-view> -->
+
     <main class="main">
       <ul class="m-lists" v-if="posts && posts.length">
         <li class="m-lists__item" v-for="post of posts"><a v-bind:href="url + post.slug">

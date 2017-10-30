@@ -21,7 +21,7 @@
             <span>Works</span>
             <span>Works</span>
           </router-link></li>
-          <li class="js-btn"><router-link to="/about" exact>
+          <li class="js-btn"><router-link to="/about">
             <span>About</span>
             <span>About</span>
           </router-link></li>

@@ -10,6 +10,7 @@ import Menu from './_module/_menu';
 import Loading from './_module/_loading';
 import Scroller from './_module/_scroller';
 import Works from './_module/_works';
+Vue.use(VueRouter);
 
 // components
 import GlobalHeader from './_components/_globalHeader.vue';
@@ -22,7 +23,7 @@ Vue.component('global-loading', GlobalLoading);
 Vue.component('global-menu', Globalmenu);
 Vue.component('global-footer', GlobalFooter);
 
-const Home = { template: '<div>home</div>'    }
+const Home = { template: '<div>home</div>'};
 const Foo  = { template: '<div>foo</div>' };
 const Bar  = { template: '<div>bar</div>' };
 
@@ -33,7 +34,8 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  routes
+  routes,
+  mode: 'history'
 });
 
 const app = new Vue({
@@ -45,21 +47,20 @@ const app = new Vue({
     posts: []
   },
 
-  methods: {
-    media: function(id){
-      axios.get(this.source+'/wp-json/wp/v2/media/'+id)
-      .then(response => {
-        this.media = response.data
-      })
-      .catch(e => {
-        this.errors.push(e)
-      });
-      return '';
-    },
-  },
+  // methods: {
+  //   media: function(id){
+  //     axios.get(this.source+'/wp-json/wp/v2/media/'+id)
+  //     .then(response => {
+  //       this.media = response.data
+  //     })
+  //     .catch(e => {
+  //       this.errors.push(e)
+  //     });
+  //     return '';
+  //   },
+  // },
 
   created(){
-
     //postを取得
     axios.get(this.source+'wp-json/wp/v2/posts?_embed')
     .then(response => {
