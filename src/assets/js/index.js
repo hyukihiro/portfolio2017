@@ -10,27 +10,24 @@ import Menu from './_module/_menu';
 import Loading from './_module/_loading';
 import Scroller from './_module/_scroller';
 import Works from './_module/_works';
+import App from './pages/app'
 Vue.use(VueRouter);
 
 // components
-import GlobalHeader from './_components/_globalHeader.vue';
-import GlobalLoading from './_components/_globalLoading.vue';
-import Globalmenu from './_components/_globalMenu.vue';
-import GlobalFooter from './_components/_globalFooter.vue';
+import GlobalHeader from '../../components/_globalHeader.vue';
+import GlobalLoading from '../../components/_globalLoading.vue';
+import Globalmenu from '../../components/_globalMenu.vue';
+import GlobalFooter from '../../components/_globalFooter.vue';
 
 Vue.component('global-header', GlobalHeader);
 Vue.component('global-loading', GlobalLoading);
 Vue.component('global-menu', Globalmenu);
 Vue.component('global-footer', GlobalFooter);
 
-const Home = { template: '<div>home</div>'};
-const Foo  = { template: '<div>foo</div>' };
-const Bar  = { template: '<div>bar</div>' };
-
 const routes = [
-  { path: '/',    component: Home },
-  { path: '/about', component: Foo },
-  { path: '/works', component: Bar }
+  { path: '/',    component: require('../../pages/main.vue') },
+  // { path: '/about', component: require('../../pages/about') },
+  // { path: '/works', component: require('../../pages/works') }
 ];
 
 const router = new VueRouter({
@@ -41,6 +38,7 @@ const router = new VueRouter({
 const app = new Vue({
   el: '#app',
   router,
+  template: '<App/>',
   data: {
     source: 'http://portfolio-wp.eggplant.work/',
     url: 'http://portfolio.eggplant.work/',
