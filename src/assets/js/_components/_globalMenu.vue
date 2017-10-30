@@ -1,0 +1,39 @@
+<template>
+  <div class="menu">
+    <div class="l-wrap menu__inner">
+      <div class="menu__map">
+        <div class="content">
+          <p class="txt">I am now at ...</p>
+          <p class="place">Zook</p>
+        </div>
+        <div class="content__below">
+          <div class="content__map" id="map"></div>
+          <div class="content__info">
+            <p class="lead">Join me?</p>
+            <p class="tel"><a href="tel:080-1430-3664">81+ 080-1430-3664</a></p>
+          <!-- content__info --></div>
+        <!-- content__below --></div>
+      </div>
+
+      <nav class="menu__navigation">
+        <ul>
+          <li class="js-btn"><router-link to="/" exact>
+            <span>Works</span>
+            <span>Works</span>
+          </router-link></li>
+          <li class="js-btn"><router-link to="/about" exact>
+            <span>About</span>
+            <span>About</span>
+          </router-link></li>
+          <li class="js-btn"><span class="disable">
+            <span>Lab</span>
+            <span>Lab</span>
+          </span></li>
+        </ul>
+      <!-- navigarion --></nav>
+    <!-- l-wrap --></div>
+    <audio id="js-sound" preload="auto">
+      <source src="/assets/sound/sound01.mp3" type="audio/mp3">
+    </audio>
+  <!-- menu --></div>
+</template>

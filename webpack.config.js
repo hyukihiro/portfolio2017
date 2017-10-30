@@ -32,6 +32,15 @@ module.exports = [
             'imports-loader?this=>window',
             'exports-loader?window.createjs'
           ]
+        },
+        {
+          test: /\.vue$/,
+          loader: 'vue-loader',
+          options: {
+            loaders: {
+              js: 'babel-loader'
+            }
+          }
         }
     	]
     },
