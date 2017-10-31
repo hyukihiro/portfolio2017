@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-  <link rel="stylesheet" href="/assets/css/bundle.css">
-  <title>About | Yukihiro Hoshide</title>
-</head>
-<body class="about">
+<template>
   <div id="app">
 
     <global-header></global-header>
@@ -98,8 +88,21 @@
     <global-footer></global-footer>
 
   <!-- #app --></div>
+</template>
 
-  <script src="/vender.js"></script>
-  <script src="/app.js"></script>
-</body>
-</html>
+<script>
+import GlobalHeader from '../components/_globalHeader.vue';
+import GlobalLoading from '../components/_globalLoading.vue';
+import Globalmenu from '../components/_globalMenu.vue';
+import GlobalFooter from '../components/_globalFooter.vue';
+
+export default {
+  name: 'about',
+
+  data() {
+    return {
+      posts: []
+    }
+  },
+}
+</script>

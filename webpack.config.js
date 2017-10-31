@@ -9,11 +9,11 @@ module.exports = [
   {
     entry: {
     	"vender": ['jquery', 'vue', 'createjs-easeljs', 'underscore'],
-    	"app": './src/assets/js/index.js',
+    	"app": './src/index.js',
     },
     output: {
       filename: '[name].js',
-      path: path.resolve(__dirname, './dist/assets/js')
+      path: path.resolve(__dirname, './dist/')
     },
 
     // modules

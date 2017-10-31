@@ -1,0 +1,76 @@
+<template>
+  <div id="app">
+    <global-loading></global-loading>
+
+    <global-header></global-header>
+
+    <global-menu></global-menu>
+
+    <main class="main">
+      <ul class="m-lists" v-if="posts && posts.length">
+        <li class="m-lists__item" v-for="post of posts"><a v-bind:href="url + post.slug">
+          <div class="image"><img :src="post._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url" alt=""></div>
+          <div class="content">
+            <div class="txt">
+              <h2 class="name">{{post.title.rendered}}</h2>
+              <ul class="skills">
+                <li>{{post.acf.technologies}}</li>
+              </ul>
+            </div>
+          <!-- content --></div>
+        </a><!-- m-lists__item --></li>
+      <!-- lists --></ul>
+    <!-- main --></main>
+
+    <global-footer></global-footer>
+  </div>
+</template>
+
+<script>
+// components
+import GlobalHeader from '../components/_globalHeader.vue';
+import GlobalLoading from '../components/_globalLoading.vue';
+import Globalmenu from '../components/_globalMenu.vue';
+import GlobalFooter from '../components/_globalFooter.vue';
+
+export default {
+  name: 'works',
+
+  data() {
+    return {
+      post: []
+    }
+  },
+
+  created() {
+    this.fetchData();
+  },
+
+  watch: {
+    '$route': 'fetchData'
+  },
+
+  methods: {
+    fetchData() {
+      if ( this.$route.params.id === undefined ) { // if there is no slug, we're at the home page so we need to fetch it
+        HTTP.get('wp-json/wp/v2/pages?slug=front-page')
+        .then((resp) => {
+          this.page = resp.data[0]
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+
+      } else {
+        HTTP.get('wp-json/wp/v2/pages?slug='+this.$route.params.id) // if we're not at the home page, then we grab the page via its slug
+        .then((resp) => {
+          this.page = resp.data[0]
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+      }
+    }
+  }
+}
+</script>

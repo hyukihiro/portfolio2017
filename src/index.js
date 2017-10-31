@@ -1,44 +1,46 @@
 import $ from 'jquery';
+
+// vue
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import axios from'axios';
-import controller from './_module/_controller';
-import PageView from './_module/_pageView';
-import Fv from './_module/_fv';
-import { date, weather } from './_module/_meta';
-import Menu from './_module/_menu';
-import Loading from './_module/_loading';
-import Scroller from './_module/_scroller';
-import Works from './_module/_works';
-import App from './pages/app'
 Vue.use(VueRouter);
+import axios from'axios';
+import routes from './routes'
+
+// js
+import controller from './assets/js/_module/_controller';
+import PageView from './assets/js/_module/_pageView';
+import Fv from './assets/js/_module/_fv';
+import { date, weather } from './assets/js/_module/_meta';
+import Menu from './assets/js/_module/_menu';
+import Loading from './assets/js/_module/_loading';
+import Scroller from './assets/js/_module/_scroller';
+import Works from './assets/js/_module/_works';
+
+// pages
+import App from './app.vue'
 
 // components
-import GlobalHeader from '../../components/_globalHeader.vue';
-import GlobalLoading from '../../components/_globalLoading.vue';
-import Globalmenu from '../../components/_globalMenu.vue';
-import GlobalFooter from '../../components/_globalFooter.vue';
-
+import GlobalHeader from './components/_globalHeader.vue';
 Vue.component('global-header', GlobalHeader);
+import GlobalLoading from './components/_globalLoading.vue';
 Vue.component('global-loading', GlobalLoading);
+import Globalmenu from './components/_globalMenu.vue';
 Vue.component('global-menu', Globalmenu);
+import GlobalFooter from './components/_globalFooter.vue';
 Vue.component('global-footer', GlobalFooter);
-
-const routes = [
-  { path: '/',    component: require('../../pages/main.vue') },
-  // { path: '/about', component: require('../../pages/about') },
-  // { path: '/works', component: require('../../pages/works') }
-];
 
 const router = new VueRouter({
   routes,
-  mode: 'history'
+  mode: 'history',
+  history: true,
 });
 
 const app = new Vue({
   el: '#app',
-  router,
   template: '<App/>',
+  components: { App },
+  router,
   data: {
     source: 'http://portfolio-wp.eggplant.work/',
     url: 'http://portfolio.eggplant.work/',
@@ -58,18 +60,18 @@ const app = new Vue({
   //   },
   // },
 
-  created(){
-    //postを取得
-    axios.get(this.source+'wp-json/wp/v2/posts?_embed')
-    .then(response => {
-      this.posts = response.data;
-    })
-    .catch(e => {
-      this.errors.push(e)
-    });
-
-  },
-}).$mount('#app');
+  // created(){
+  //   //postを取得
+  //   axios.get(this.source+'wp-json/wp/v2/posts?_embed')
+  //   .then(response => {
+  //     this.posts = response.data;
+  //   })
+  //   .catch(e => {
+  //     this.errors.push(e)
+  //   });
+  //
+  // },
+})
 
 $(() => {
   new PageView();
