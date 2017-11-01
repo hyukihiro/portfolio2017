@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper detail">
     <main class="main">
       <div class="fv">
         <h2 class="project-name js-proj-name"><span>Seiban</span></h2>
@@ -23,8 +23,7 @@
             <dl class="details__unit">
               <dt class="details__head">Overview</dt>
               <dd class="details__body">
-                <p class="details__txt">Seiban is the industry leader in Japanese scroolbag “randoseru”.</p>
-                <p class="details__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="details__txt">{{ posts }}</p>
               </dd>
             </dl>
           <!-- details__item --></div>
@@ -81,22 +80,24 @@
 </template>
 
 <script>
-// components
-import GlobalHeader from '../components/_globalHeader.vue';
-import GlobalLoading from '../components/_globalLoading.vue';
-import Globalmenu from '../components/_globalMenu.vue';
-import GlobalFooter from '../components/_globalFooter.vue';
+// setting
+import { HTTP } from '../environment';
+
+// js
+import $ from 'jquery';
+import Works from '../assets/js/_module/_works';
 
 export default {
   name: 'detail',
 
   data() {
     return {
-      post: []
+      posts: []
     }
   },
 
   created() {
+    new Works();
     this.fetchData();
   },
 
@@ -106,25 +107,280 @@ export default {
 
   methods: {
     fetchData() {
-      if ( this.$route.params.id === undefined ) { // if there is no slug, we're at the home page so we need to fetch it
-        HTTP.get('wp-json/wp/v2/pages?slug=front-page')
-        .then((resp) => {
-          this.page = resp.data[0]
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-
-      } else {
-        HTTP.get('wp-json/wp/v2/pages?slug='+this.$route.params.id) // if we're not at the home page, then we grab the page via its slug
-        .then((resp) => {
-          this.page = resp.data[0]
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-      }
+      HTTP.get('wp-json/wp/v2/posts?_embed&slug=' + this.$route.path)
+      .then((resp) => {
+        this.posts = resp.data;
+      })
+      .catch((err) => {
+        console.log(err)
+      })
     }
   }
 }
 </script>
+
+<style lang="scss" scope>
+
+@import '../assets/sass/_mixin.scss';
+
+.detail {
+  position: relative;
+
+  .fv {
+    position: relative;
+    width: 100vw;
+    height: 70vh;
+    background: url('/assets/img/work01.jpg') no-repeat 50% 50%;
+    background-size: cover;
+    z-index: 0;
+
+    .project-name {
+      overflow: hidden;
+      position: absolute;
+      left: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+      font-size: 4.8rem;
+      z-index: 3;
+      line-height: 1;
+    }
+
+    .project-name span {
+      display: inline-block;
+    }
+
+    .scroll a {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      transform: translateX(-50%);
+      color: #fff;
+      height: 80px;
+    }
+
+    .scroll__txt {
+      display: flex;
+    }
+
+    .scroll__line {
+      display: inline-block;
+      width: 1px;
+      height: 40px;
+      background: #fff;
+    }
+
+    .bg {
+      position: absolute;
+      z-index: 0;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: #1363e6;
+      opacity: .9;
+    }
+  }
+
+  .details {
+    width: 100%;
+    margin: 0 auto;
+    padding: 80px 40px;
+
+    &__wrap {
+      display: flex;
+    }
+
+    &__item {
+      width: 50%;
+      padding: 0 40px;
+    }
+
+    &__list {
+      font-size: 1.4rem;
+    }
+
+
+    &__unit + .details__unit {
+      margin-top: 50px;
+    }
+
+    &__head {
+      position: relative;
+      font-size: 1.6rem;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    &__head::after {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      left: -30px;
+      top: 50%;
+      width: 20px;
+      height: 2px;
+      background: #000;
+      transform: translateY(-50%);
+    }
+
+    &__txt {
+      font-size: 1.4rem;
+      line-height: 2.25;
+      font-weight: 400;
+    }
+
+    &__txt + .details__txt {
+      margin-top: 20px;
+    }
+
+    &__list {
+      line-height: 2.5;
+    }
+  }
+
+  .site-flow {
+
+    .item a {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 40px 80px;
+      font-size: 2.4rem;
+    }
+
+    .item__name {
+      font-weight: 500;
+    }
+  }
+
+  // variation
+  .site-flow {
+
+    .item--prev a {
+      background: #1363e6;
+    }
+
+    .item--next a {
+      flex-direction: row-reverse;
+      background: #d8d8d8;
+    }
+  }
+}
+
+/* animation
+--------------------------------------------------------------------------*/
+.detail .fv .scroll__txt span {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.detail .fv .scroll__line {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+
+/* hover
+--------------------------------------------------------------------------*/
+
+
+/* xl
+--------------------------------------------------------------------------*/
+@include mq(xl) {
+  .detail {
+    .details {
+      width: 140rem;
+    }
+
+    .site-flow {
+      &__inner {
+        width: 120rem;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+
+/* sp
+--------------------------------------------------------------------------*/
+@include mq(sp) {
+  .detail {
+
+    .fv {
+      .project-name {
+        font-size: 4.0rem;
+      }
+
+      .scroll a {
+        height: 60px;
+      }
+    }
+
+    .details {
+      width: 100%;
+      margin: 0 auto;
+      padding: 40px 20px;
+
+      &__wrap {
+        flex-wrap: wrap;
+      }
+
+      &__item {
+        width: 100%;
+        padding: 0 20px;
+      }
+
+      &__item + .details__item {
+        margin-top: 25px;
+      }
+
+      &__list {
+        font-size: 1.2rem;
+      }
+
+      &__unit + .details__unit {
+        margin-top: 25px;
+      }
+
+      &__head {
+        font-size: 1.4rem;
+      }
+
+      &__head::after {
+        left: -20px;
+        width: 10px;
+      }
+
+      &__txt {
+        font-size: 1.2rem;
+      }
+    }
+
+    .site-flow {
+
+      .item a {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        font-size: 1.8rem;
+      }
+    }
+
+    // variation
+    .site-flow {
+
+      .item--next a {
+        flex-direction: column;
+      }
+    }
+  }
+}
+</style>

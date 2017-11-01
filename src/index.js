@@ -15,7 +15,7 @@ import PageView from './assets/js/_module/_pageView';
 import Menu from './assets/js/_module/_menu';
 import Loading from './assets/js/_module/_loading';
 import Scroller from './assets/js/_module/_scroller';
-import Works from './assets/js/_module/_works';
+
 
 // pages
 import App from './app.vue'
@@ -73,7 +73,6 @@ $(() => {
   new Menu();
   new Loading();
   new Scroller();
-  new Works();
 
   console.log("%cSpecial Thanks K.I","padding:4px; background: #333; color: #fff");
   // console.log("%cTake a look to the code on github : http://github.com/ivandaum/ivandaum","padding:3px; background: #000; color: #fff");

@@ -12,6 +12,7 @@ export default class Works {
     this._$projName = $('.js-proj-name span');
 
     this._tween();
+    console.log("from works")
   }
 
   _tween() {
@@ -22,14 +23,22 @@ export default class Works {
   		ease: props.ease
   	});
 
-  	TweenMax.staggerTo(this._$text, 1, {
+  	TweenMax.staggerFromTo(this._$text, 1, {
+      y: 20,
+      opacity: 0
+    },
+    {
   		y: 0,
   		opacity: 1,
   		ease: props.ease,
   		delay: .5
   	}, .05);
 
-  	TweenMax.to(this._$line, 2, {
+  	TweenMax.fromTo(this._$line, 2, {
+      y: 40,
+      opacity: 0
+    },
+    {
   		y: 0,
   		opacity: 1,
   		delay: 1,

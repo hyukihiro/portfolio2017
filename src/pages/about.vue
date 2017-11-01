@@ -83,11 +83,6 @@
 </template>
 
 <script>
-// components
-import GlobalHeader from '../components/_globalHeader.vue';
-import GlobalLoading from '../components/_globalLoading.vue';
-import Globalmenu from '../components/_globalMenu.vue';
-import GlobalFooter from '../components/_globalFooter.vue';
 
 // js
 import $ from 'jquery';
@@ -106,7 +101,7 @@ export default {
     return {
       posts: []
     }
-  },
+  }
 }
 </script>
 
@@ -273,9 +268,5 @@ export default {
       }
     }
   }
-
 }
-
-
-
 </style>

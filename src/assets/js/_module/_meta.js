@@ -18,7 +18,7 @@ export function date() {
 
   // setInterval(function() {
   //   date();
-  // }, 60000)
+  // }, 1000)
 }
 
 export function weather() {

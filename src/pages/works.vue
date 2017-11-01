@@ -3,7 +3,7 @@
 
     <main class="main">
       <ul class="m-lists" v-if="posts && posts.length">
-        <li class="m-lists__item" v-for="post of posts"><a v-bind:href="post.slug">
+        <li class="m-lists__item" v-for="post of posts"><a v-bind:href="'/#/' + post.slug">
           <div class="image"><img :src="post._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url" alt=""></div>
           <div class="content">
             <div class="txt">
@@ -23,12 +23,6 @@
 // setting
 import { HTTP } from '../environment';
 
-// components
-import GlobalHeader from '../components/_globalHeader.vue';
-import GlobalLoading from '../components/_globalLoading.vue';
-import Globalmenu from '../components/_globalMenu.vue';
-import GlobalFooter from '../components/_globalFooter.vue';
-
 export default {
   name: 'works',
 
@@ -36,7 +30,6 @@ export default {
     return {
       posts: []
     }
-    console.log(this.posts);
   },
 
   created() {
