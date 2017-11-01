@@ -1,28 +1,18 @@
 <template>
   <div id="app">
-    <global-loading></global-loading>
+    <div class="wrapper index">
 
-    <global-header></global-header>
+      <global-loading></global-loading>
 
-    <global-menu></global-menu>
+      <global-header></global-header>
 
-    <main class="main">
-      <ul class="m-lists" v-if="posts && posts.length">
-        <li class="m-lists__item" v-for="post of posts"><a v-bind:href="post.slug">
-          <div class="image"><img :src="post._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url" alt=""></div>
-          <div class="content">
-            <div class="txt">
-              <h2 class="name">{{post.title.rendered}}</h2>
-              <ul class="skills">
-                <li>{{post.acf.technologies}}</li>
-              </ul>
-            </div>
-          <!-- content --></div>
-        </a><!-- m-lists__item --></li>
-      <!-- lists --></ul>
-    <!-- main --></main>
+      <global-menu></global-menu>
 
-    <global-footer></global-footer>
+      <router-view></router-view>
+
+      <global-footer></global-footer>
+
+    </div>
   </div>
 </template>
 
@@ -38,9 +28,9 @@ import GlobalFooter from './components/_globalFooter.vue';
 
 export default {
   name: 'app',
-  created() {
-    this.fetchData()
-  },
+  // created() {
+  //   this.fetchData()
+  // },
 
   data() {
     return {
@@ -48,32 +38,32 @@ export default {
     }
   },
 
-  watch: {
-    '$route': 'fetchData'
-  },
+  // watch: {
+  //   '$route': 'fetchData'
+  // },
 
-  methods: {
-    fetchData() {
-      if ( this.$route.params.id === undefined ) { // if there is no slug, we're at the home page so we need to fetch it
-        HTTP.get('wp-json/wp/v2/posts?_embed')
-        .then((resp) => {
-          this.posts = resp.data;
-        })
-        .catch((err) => {
-          console.log(err)
-        })
+  // methods: {
+  //   fetchData() {
+  //     if ( this.$route.params.id === undefined ) { // if there is no slug, we're at the home page so we need to fetch it
+  //       HTTP.get('wp-json/wp/v2/posts?_embed')
+  //       .then((resp) => {
+  //         this.posts = resp.data;
+  //       })
+  //       .catch((err) => {
+  //         console.log(err)
+  //       })
 
-      } else {
-        console.log('in');
-        HTTP.get('wp-json/wp/v2/posts') // if we're not at the home page, then we grab the page via its slug
-        .then((resp) => {
-          this.posts = resp.data[0]
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-      }
-    }
-  }
+  //     } else {
+  //       console.log('in');
+  //       HTTP.get('wp-json/wp/v2/posts') // if we're not at the home page, then we grab the page via its slug
+  //       .then((resp) => {
+  //         this.posts = resp.data[0]
+  //       })
+  //       .catch((err) => {
+  //         console.log(err)
+  //       })
+  //     }
+  //   }
+  // }
 }
 </script>

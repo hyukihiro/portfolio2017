@@ -5,13 +5,13 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 import axios from'axios';
-import routes from './routes'
+// import routes from './routes'
+import router from './router'
 
 // js
 import controller from './assets/js/_module/_controller';
 import PageView from './assets/js/_module/_pageView';
-import Fv from './assets/js/_module/_fv';
-import { date, weather } from './assets/js/_module/_meta';
+// import Fv from './assets/js/_module/_fv';
 import Menu from './assets/js/_module/_menu';
 import Loading from './assets/js/_module/_loading';
 import Scroller from './assets/js/_module/_scroller';
@@ -29,12 +29,6 @@ import Globalmenu from './components/_globalMenu.vue';
 Vue.component('global-menu', Globalmenu);
 import GlobalFooter from './components/_globalFooter.vue';
 Vue.component('global-footer', GlobalFooter);
-
-const router = new VueRouter({
-  routes,
-  mode: 'history',
-  history: true,
-});
 
 const app = new Vue({
   el: '#app',
@@ -75,9 +69,7 @@ const app = new Vue({
 
 $(() => {
   new PageView();
-  Fv();
-  date();
-  weather();
+  // Fv();
   new Menu();
   new Loading();
   new Scroller();

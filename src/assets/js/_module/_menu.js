@@ -18,6 +18,7 @@ export default class Menu {
 
   _handleEvents() {
     this._$trigger.on('click', this._onClick.bind(this));
+    this._$list.on('click', this._onClick.bind(this));
   }
 
   _onClick() {

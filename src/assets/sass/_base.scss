@@ -25,6 +25,7 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	line-height: 2;
   letter-spacing: 1px;
+  word-wrap: break-word;
 
   @include mq(pc) {
     font-size: 1.6rem;

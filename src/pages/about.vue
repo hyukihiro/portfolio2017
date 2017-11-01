@@ -1,10 +1,5 @@
 <template>
-  <div id="app">
-
-    <global-header></global-header>
-
-    <global-menu></global-menu>
-
+  <div class="wrapper about">
     <main class="main">
       <div class="introduction">
         <div class="meta">
@@ -84,17 +79,25 @@
         <!-- skills__inner --></div>
       <!-- skills --></div>
     <!-- main --></main>
-
-    <global-footer></global-footer>
-
-  <!-- #app --></div>
+  </div>
 </template>
 
 <script>
+// components
 import GlobalHeader from '../components/_globalHeader.vue';
 import GlobalLoading from '../components/_globalLoading.vue';
 import Globalmenu from '../components/_globalMenu.vue';
 import GlobalFooter from '../components/_globalFooter.vue';
+
+// js
+import $ from 'jquery';
+import { date, weather } from '../assets/js/_module/_meta';
+
+$(() => {
+  date();
+  weather();
+});
+
 
 export default {
   name: 'about',
@@ -106,3 +109,173 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scope>
+
+@import '../assets/sass/_mixin.scss';
+
+.about {
+  .main {
+    margin-top: 100px;
+  }
+
+  .introduction {
+    padding: 30px 30px 70px;
+  }
+
+  .meta__cat {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    font-size: 1.4rem;
+    font-weight: 300;
+  }
+
+  .meta__cat + .meta__cat {
+    margin-top: 5px;
+  }
+
+  .meta__item {
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .meta__item + .meta__item::after {
+    content: '/';
+    display: inline-block;
+    position: absolute;
+    left: 5px;
+    bottom: 0;
+  }
+
+  .meta__item .colon {
+    padding: 0 3px;
+    animation: flashing 2s steps(2, start) infinite;
+  }
+
+  .prof {
+    width: 100%;
+    padding-top: 60px;
+    line-height: 2.5;
+
+    .txt + .txt {
+      margin-top: 50px;
+    }
+  }
+
+  .sns {
+    display: flex;
+    align-items: center;
+    padding-top: 50px;
+
+    li + li {
+      padding-left: 30px;
+    }
+  }
+
+  .skills {
+    padding: 70px 30px;
+    background: #D8D8D8;
+
+    &__inner {
+      width: 100%;
+    }
+
+    .skills__hdg {
+      font-weight: 500;
+      font-size: 2.8rem;
+    }
+
+    .categories {
+      margin-top: 20px;
+      display: flex;
+    }
+
+    .category {
+      &__hdg {
+        font-weight: 400;
+        font-size: 2.0rem;
+      }
+
+      .items {
+        padding-top: 10px;
+        font-size: 1.2rem;
+        line-height: 2.25;
+      }
+    }
+
+    .category + .category {
+      padding-left: 70px;
+    }
+  }
+
+
+  /* xl
+  --------------------------------------------------------------------------*/
+  @include mq(xl) {
+    .main .prof__inner {
+      width: 140rem;
+      margin: 0 auto;
+    }
+
+    .main .skills__inner {
+      width: 140rem;
+      margin: 0 auto;
+    }
+  }
+
+  /* sp
+  --------------------------------------------------------------------------*/
+  @include mq(sp) {
+    .introduction {
+      padding-bottom: 50px;
+    }
+
+    .prof {
+      padding-top: 10px;
+
+      .txt + .txt {
+        margin-top: 20px;
+      }
+    }
+
+    .sns {
+      padding-top: 30px;
+      justify-content: space-between;
+
+      li {
+        font-size: 1.2rem;
+      }
+
+      li + li {
+        padding-left: 10px;
+      }
+    }
+
+    .skills {
+      padding: 30px;
+
+      .skills__hdg {
+        font-size: 2.0rem;
+      }
+
+      .categories {
+        flex-direction: column;
+      }
+
+      .category + .category {
+        padding-left: 0;
+        padding-top: 30px;
+      }
+
+      .category__hdg {
+        font-size: 1.6rem;
+      }
+    }
+  }
+
+}
+
+
+
+</style>

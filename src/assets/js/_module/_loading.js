@@ -36,6 +36,7 @@ export default class Loading {
 	}
 
 	_finish() {
+		let _this = this;
 		setTimeout(() => {
 			this._tl.pause();
 			let ftl = new TimelineMax();
@@ -43,8 +44,9 @@ export default class Loading {
 			ftl.to( this._$line, .5, { scaleX: 1, ease: props.ease, delay: .5})
 			ftl.to( this._$letters, .4, { y: 22, ease: props.ease})
 			ftl.to( this._$line, .5, { scaleX: 0, ease: props.ease, transformOrigin: '100% 0'})
-			ftl.to( this._$wrapper, 1, { scaleX: 0, ease: props.ease, transformOrigin: '100% 0'})
+			ftl.to( this._$wrapper, 1, { scaleX: 0, ease: props.ease, transformOrigin: '100% 0', onComplete: function() { _this._$wrapper.remove();}})
 		}, 1200);
+
 	}
 
 	_tween() {
