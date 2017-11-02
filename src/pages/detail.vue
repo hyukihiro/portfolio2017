@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper detail">
     <main class="main">
-      <div class="fv">
-        <h2 class="project-name js-proj-name"><span>Seiban</span></h2>
+      <div class="fv" :style="{ 'background-image': posts[0]._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url }">
+        <h2 class="project-name js-proj-name"><span>{{ posts[0].acf.project_name }}</span></h2>
         <div class="scroll"><a href="" data-scroller="#content" class="js-scroller">
           <span class="scroll__txt">
             <span>S</span>
@@ -14,7 +14,7 @@
           </span>
           <span class="scroll__line"></span>
         </a><!-- scroll --></div>
-        <div class="bg"></div>
+        <div class="bg" :style="{ 'background-color': posts[0].acf.key_color }"></div>
       <!-- fv --></div>
 
       <div class="details js-scroll-target" id="content">
@@ -23,7 +23,7 @@
             <dl class="details__unit">
               <dt class="details__head">Overview</dt>
               <dd class="details__body">
-                <p class="details__txt">{{ posts }}</p>
+                <p class="details__txt">{{ posts[0].acf.overview }}</p>
               </dd>
             </dl>
           <!-- details__item --></div>
@@ -33,31 +33,28 @@
               <dt class="details__head">HighLights</dt>
               <dd class="details__body">
                 <ul class="details__list">
-                  <li>・Largescale website building</li>
-                  <li>・Full responsive web design</li>
-                  <li>・Connecting to EC website</li>
-                  <li>・Tuning every assets to improve page speed</li>
+                  <li>{{ posts[0].acf.highlights }}</li>
                 </ul>
               </dd>
             </dl>
             <dl class="details__unit">
               <dt class="details__head">Roles</dt>
               <dd class="details__body">
-                <p class="details__txt">Front-end Development</p>
+                <p class="details__txt">{{ posts[0].acf.roles }}</p>
               </dd>
             </dl>
 
             <dl class="details__unit">
               <dt class="details__head">Technologies</dt>
               <dd class="details__body">
-                <p class="details__txt">HTML, SCSS, JS, Gulp</p>
+                <p class="details__txt">{{ posts[0].acf.technologies }}</p>
               </dd>
             </dl>
 
             <dl class="details__unit">
               <dt class="details__head">Launch</dt>
               <dd class="details__body">
-                <p class="details__txt"><a href="https://www.seiban.co.jp/" target="_blank">View This Site</a></p>
+                <p class="details__txt"><a :href="posts[0].acf.launch" target="_blank">View This Site</a></p>
               </dd>
             </dl>
           <!-- details__item --></div>
@@ -107,7 +104,7 @@ export default {
 
   methods: {
     fetchData() {
-      HTTP.get('wp-json/wp/v2/posts?_embed&slug=' + this.$route.path)
+      HTTP.get('wp-json/wp/v2/posts?slug=' + this.$route.path + '&_embed')
       .then((resp) => {
         this.posts = resp.data;
       })
@@ -130,7 +127,8 @@ export default {
     position: relative;
     width: 100vw;
     height: 70vh;
-    background: url('/assets/img/work01.jpg') no-repeat 50% 50%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
     background-size: cover;
     z-index: 0;
 
