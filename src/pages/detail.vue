@@ -1,7 +1,8 @@
 <template>
   <div class="wrapper detail">
     <main class="main">
-      <div class="fv" :style="{ 'background-image': posts[0]._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url }">
+      <div class="fv">
+        <div class="img"><img :src="posts[0].featured_image.src"></div>
         <h2 class="project-name js-proj-name"><span>{{ posts[0].acf.project_name }}</span></h2>
         <div class="scroll"><a href="" data-scroller="#content" class="js-scroller">
           <span class="scroll__txt">
@@ -33,7 +34,7 @@
               <dt class="details__head">HighLights</dt>
               <dd class="details__body">
                 <ul class="details__list">
-                  <li>{{ posts[0].acf.highlights }}</li>
+                  <li v-html="posts[0].acf.highlights"></li>
                 </ul>
               </dd>
             </dl>
@@ -104,7 +105,7 @@ export default {
 
   methods: {
     fetchData() {
-      HTTP.get('wp-json/wp/v2/posts?slug=' + this.$route.path + '&_embed')
+      HTTP.get('wp-json/wp/v2/posts?slug=' + this.$route.path)
       .then((resp) => {
         this.posts = resp.data;
       })
@@ -132,6 +133,18 @@ export default {
     background-size: cover;
     z-index: 0;
 
+    .img {
+      position: relative;
+    }
+
+    .img img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: auto;
+      height: 70vh;
+    }
+
     .project-name {
       overflow: hidden;
       position: absolute;
@@ -141,7 +154,7 @@ export default {
       color: #fff;
       font-size: 4.8rem;
       z-index: 3;
-      line-height: 1;
+      line-height: 1.5;
     }
 
     .project-name span {
@@ -233,8 +246,24 @@ export default {
       font-weight: 400;
     }
 
+    &__txt a {
+      position: relative;
+    }
+
     &__txt + .details__txt {
       margin-top: 20px;
+    }
+
+    &__txt a::after {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background: #000;
+      transform: translateX(0);
     }
 
     &__list {
@@ -286,7 +315,9 @@ export default {
 
 /* hover
 --------------------------------------------------------------------------*/
-
+.detail .details__txt a:hover::after {
+  transform: translateX(1);
+}
 
 /* xl
 --------------------------------------------------------------------------*/
