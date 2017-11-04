@@ -2,8 +2,8 @@
   <div class="wrapper detail">
     <main class="main">
       <div class="fv">
-        <div class="img"><img :src="posts[0].featured_image.src"></div>
-        <h2 class="project-name js-proj-name"><span>{{ posts[0].acf.project_name }}</span></h2>
+        <div class="img"><img :src="single[0].featured_image.src"></div>
+        <h2 class="project-name js-proj-name"><span>{{ single[0].acf.project_name }}</span></h2>
         <div class="scroll"><a href="" data-scroller="#content" class="js-scroller">
           <span class="scroll__txt">
             <span>S</span>
@@ -15,7 +15,7 @@
           </span>
           <span class="scroll__line"></span>
         </a><!-- scroll --></div>
-        <div class="bg" :style="{ 'background-color': posts[0].acf.key_color }"></div>
+        <div class="bg" :style="{ 'background-color': single[0].acf.key_color }"></div>
       <!-- fv --></div>
 
       <div class="details js-scroll-target" id="content">
@@ -24,7 +24,7 @@
             <dl class="details__unit">
               <dt class="details__head">Overview</dt>
               <dd class="details__body">
-                <p class="details__txt">{{ posts[0].acf.overview }}</p>
+                <p class="details__txt" v-html="single[0].acf.overview"></p>
               </dd>
             </dl>
           <!-- details__item --></div>
@@ -34,28 +34,28 @@
               <dt class="details__head">HighLights</dt>
               <dd class="details__body">
                 <ul class="details__list">
-                  <li v-html="posts[0].acf.highlights"></li>
+                  <li v-html="single[0].acf.highlights"></li>
                 </ul>
               </dd>
             </dl>
             <dl class="details__unit">
               <dt class="details__head">Roles</dt>
               <dd class="details__body">
-                <p class="details__txt">{{ posts[0].acf.roles }}</p>
+                <p class="details__txt">{{ single[0].acf.roles }}</p>
               </dd>
             </dl>
 
             <dl class="details__unit">
               <dt class="details__head">Technologies</dt>
               <dd class="details__body">
-                <p class="details__txt">{{ posts[0].acf.technologies }}</p>
+                <p class="details__txt">{{ single[0].acf.technologies }}</p>
               </dd>
             </dl>
 
             <dl class="details__unit">
               <dt class="details__head">Launch</dt>
               <dd class="details__body">
-                <p class="details__txt"><a :href="posts[0].acf.launch" target="_blank">View This Site</a></p>
+                <p class="details__txt"><a :href="single[0].acf.launch" target="_blank">View This Site</a></p>
               </dd>
             </dl>
           <!-- details__item --></div>
@@ -90,7 +90,7 @@ export default {
 
   data() {
     return {
-      posts: []
+      single: []
     }
   },
 
@@ -107,7 +107,7 @@ export default {
     fetchData() {
       HTTP.get('wp-json/wp/v2/posts?slug=' + this.$route.path)
       .then((resp) => {
-        this.posts = resp.data;
+        this.single = resp.data;
       })
       .catch((err) => {
         console.log(err)
@@ -117,7 +117,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped
+<style lang="scss" scoped>
 
 @import '../assets/sass/_mixin.scss';
 
@@ -345,6 +345,11 @@ export default {
     .fv {
       .project-name {
         font-size: 4.0rem;
+      }
+
+      .img img {
+        left: 50%;
+        transform: translateX(-50%);
       }
 
       .scroll a {

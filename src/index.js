@@ -15,7 +15,7 @@ import PageView from './assets/js/_module/_pageView';
 import Menu from './assets/js/_module/_menu';
 import Loading from './assets/js/_module/_loading';
 import Scroller from './assets/js/_module/_scroller';
-
+import './assets/sass/index.scss';
 
 // pages
 import App from './app.vue'

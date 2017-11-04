@@ -20,12 +20,6 @@
 // setting
 import { HTTP } from './environment';
 
-// components
-import GlobalHeader from './components/_globalHeader.vue';
-// import GlobalLoading from './components/_globalLoading.vue';
-import Globalmenu from './components/_globalMenu.vue';
-import GlobalFooter from './components/_globalFooter.vue';
-
 export default {
   name: 'app',
   // created() {
@@ -67,3 +61,8 @@ export default {
   // }
 }
 </script>
+
+<style lang="scss" scoped>
+
+
+</style>
