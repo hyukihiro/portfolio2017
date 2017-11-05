@@ -53,12 +53,6 @@ const app = new Vue({
     .catch(e => {
       this.errors.push(e)
     });
-  },
-
-  methods: {
-    toggleMenu() {
-      alert('in');
-    }
   }
 })
 

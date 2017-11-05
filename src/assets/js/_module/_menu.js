@@ -10,10 +10,9 @@ export default class Menu {
     this._$sound    = $('#js-sound');
     this._$list     = $('.js-btn a');
     this._$logo     = $('.js-btn-logo a');
-    this._$link     = $('.menu__item');
     this._isOpen    = false;
     this._active    = 'is-menu-active';
-    
+
     this._handleEvents();
     this._sound();
   }
@@ -21,8 +20,8 @@ export default class Menu {
   _handleEvents() {
     this._$trigger.on('click', this._onClick.bind(this));
     this._$list.on('click', this._onClick.bind(this));
-    this._$link.on('click', this._onClickLink.bind(this));
     this._$logo.on('click', this._onClickLogo.bind(this));
+    $(document).on('click', '.js-link', this._onClickLink.bind(this));
   }
 
   _onClick() {
