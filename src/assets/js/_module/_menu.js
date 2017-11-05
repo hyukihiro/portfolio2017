@@ -13,9 +13,7 @@ export default class Menu {
     this._$link     = $('.menu__item');
     this._isOpen    = false;
     this._active    = 'is-menu-active';
-
-    console.log(this._$link);
-
+    
     this._handleEvents();
     this._sound();
   }

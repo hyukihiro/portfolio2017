@@ -28,7 +28,6 @@ export default class Works {
 	}
 
   _tween() {
-		console.log('in fron tween');
 		TweenMax.to(this._$projName, 1, {
   		y: 0,
   		ease: props.ease

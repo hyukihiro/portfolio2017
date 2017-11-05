@@ -5,13 +5,11 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 import axios from'axios';
-// import routes from './routes'
 import router from './router'
 
 // js
 import controller from './assets/js/_module/_controller';
 import PageView from './assets/js/_module/_pageView';
-// import Fv from './assets/js/_module/_fv';
 import Menu from './assets/js/_module/_menu';
 import Loading from './assets/js/_module/_loading';
 import Scroller from './assets/js/_module/_scroller';
@@ -38,22 +36,12 @@ const app = new Vue({
   template: '<App/>',
   components: { App },
   router,
-  // render: h => h(App),
 
   data: {
     source: 'http://portfolio-wp.eggplant.work/',
     url: 'http://portfolio.eggplant.work/',
     posts: [],
     weatherMain: 'clear'
-  },
-
-  methods: {
-
-    // menuClose() {
-    //   console.log('in');
-    //   let menu = document.getElementsByTagName('body');
-    //   menu.classList.remove('is-menu-active');
-    // }
   },
 
   created(){
@@ -71,16 +59,10 @@ const app = new Vue({
 
 $(() => {
   new PageView();
-  // Fv();
   new Loading();
-  new Scroller();
-
-  console.log("%cSpecial Thanks K.I","padding:4px; background: #333; color: #fff");
-  // console.log("%cTake a look to the code on github : http://github.com/ivandaum/ivandaum","padding:3px; background: #000; color: #fff");
-  console.log('');
-
-});
-
-$(window).on('load', () => {
   new Menu();
-})
+
+  console.log("%cAll about this site, please check the repository below","padding:4px; background: #333; color: #fff");
+  console.log("%chttps://github.com/hyukihiro/portfolio2017.git","padding:4px; background: #333; color: #fff");
+  console.log("%cSpecial Thanks K.I and Y.W","padding:4px; background: #333; color: #fff");
+});

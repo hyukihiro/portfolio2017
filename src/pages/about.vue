@@ -12,9 +12,6 @@
               <span class="minute">{{ minute }}</span>
             </li>
           </ul>
-          <ul class="meta__cat meta__cat--weather">
-            <li class="meta__item">{{ weather }}</li>
-          </ul>
         <!-- meta --></div>
         <div class="prof">
           <div class="prof__inner">
@@ -87,7 +84,6 @@
 // js
 import $ from 'jquery';
 import axios from 'axios';
-import { date, weather } from '../assets/js/_module/_meta';
 
 export default {
   name: 'about',
@@ -127,7 +123,6 @@ export default {
       axios.get("http://api.openweathermap.org/data/2.5/weather?id=1853909&units=metric&appid=2f890cb41f31cbbba489407e0936a6d5")
       .then((resp) => {
         this.weatherMain = resp.data.weather[0].main;
-        console.log(this);
       })
       .catch((err) => {
         console.log(err)

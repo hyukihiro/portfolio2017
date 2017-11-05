@@ -81,6 +81,11 @@ module.exports = {
       to: '../../assets/img'
     }]),
     new WebpackNotifierPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    }),
     extractSass
   ],
 

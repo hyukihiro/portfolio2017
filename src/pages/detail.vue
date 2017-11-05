@@ -4,17 +4,6 @@
       <div class="fv">
         <div class="img"><img :src="single[0].featured_image.src"></div>
         <h2 class="project-name js-proj-name"><span>{{ single[0].acf.project_name }}</span></h2>
-        <div class="scroll"><a href="" data-scroller="#content" class="js-scroller">
-          <span class="scroll__txt">
-            <span>S</span>
-            <span>c</span>
-            <span>r</span>
-            <span>o</span>
-            <span>l</span>
-            <span>l</span>
-          </span>
-          <span class="scroll__line"></span>
-        </a><!-- scroll --></div>
         <div class="bg" :style="{ 'background-color': single[0].acf.key_color }"></div>
       <!-- fv --></div>
 
@@ -62,17 +51,6 @@
         <!-- details__wrap --></div>
       <!-- details --></div>
 
-      <div class="site-flow">
-        <dl class="item item--prev"><a href="">
-          <dt class="item__hdg">Prev Project</dt>
-          <dd class="item__name">GFC</dd>
-          </a><!-- prev --></dl>
-        <dl class="item item--next"><a href="">
-          <dt class="item__hdg">Next Project</dt>
-          <dd class="item__name">GFC</dd>
-        </a><!-- next --></dl>
-      <!-- site-flow --></div>
-
     <!-- main --></main>
   </div>
 </template>
@@ -83,8 +61,6 @@ import { HTTP } from '../environment';
 
 // js
 import $ from 'jquery';
-import Works from '../assets/js/_module/_works';
-import Scroller from '../assets/js/_module/_scroller';
 
 export default {
   name: 'detail',
@@ -96,8 +72,6 @@ export default {
   },
 
   created() {
-    new Works();
-    new Scroller();
     this.fetchData();
   },
 
