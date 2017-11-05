@@ -1,7 +1,7 @@
 <template>
   <div class="menu">
     <div class="l-wrap menu__inner">
-      <div class="menu__map">
+      <!-- <div class="menu__map">
         <div class="content">
           <p class="txt">I am now at ...</p>
           <p class="place">Zook</p>
@@ -10,10 +10,16 @@
           <div class="content__map" id="map"></div>
           <div class="content__info">
             <p class="lead">Join me?</p>
-            <p class="tel"><a href="tel:080-1430-3664">81+ 080-1430-3664</a></p>
-          <!-- content__info --></div>
-        <!-- content__below --></div>
-      </div>
+            <p class="tel"><a href="tel:080-1430-3664">81+ 80-1430-3664</a></p>
+          </div>
+        </div>
+      </div> -->
+
+      <ul class="menu__lists" v-if="$root.posts && $root.posts.length">
+        <li class="menu__item js-link" v-for="post of $root.posts"><a v-bind:href="'/#/' + post.slug">
+          {{ post.acf.project_name }}
+        </a><!-- m-lists__item --></li>
+      <!-- lists --></ul>
 
       <nav class="menu__navigation">
         <ul>

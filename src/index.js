@@ -20,6 +20,9 @@ import './assets/sass/index.scss';
 // pages
 import App from './app.vue'
 
+// HTTP
+import { HTTP } from './environment';
+
 // components
 import GlobalHeader from './components/_globalHeader.vue';
 Vue.component('global-header', GlobalHeader);
@@ -35,42 +38,40 @@ const app = new Vue({
   template: '<App/>',
   components: { App },
   router,
+  // render: h => h(App),
+
   data: {
     source: 'http://portfolio-wp.eggplant.work/',
     url: 'http://portfolio.eggplant.work/',
-    posts: []
+    posts: [],
+    weatherMain: 'clear'
   },
 
-  // methods: {
-  //   media: function(id){
-  //     axios.get(this.source+'/wp-json/wp/v2/media/'+id)
-  //     .then(response => {
-  //       this.media = response.data
-  //     })
-  //     .catch(e => {
-  //       this.errors.push(e)
-  //     });
-  //     return '';
-  //   },
-  // },
+  methods: {
 
-  // created(){
-  //   //postを取得
-  //   axios.get(this.source+'wp-json/wp/v2/posts?_embed')
-  //   .then(response => {
-  //     this.posts = response.data;
-  //   })
-  //   .catch(e => {
-  //     this.errors.push(e)
-  //   });
-  //
-  // },
+    // menuClose() {
+    //   console.log('in');
+    //   let menu = document.getElementsByTagName('body');
+    //   menu.classList.remove('is-menu-active');
+    // }
+  },
+
+  created(){
+    //postを取得
+    HTTP.get('wp-json/wp/v2/posts')
+    .then(response => {
+      this.posts = response.data;
+    })
+    .catch(e => {
+      this.errors.push(e)
+    });
+
+  },
 })
 
 $(() => {
   new PageView();
   // Fv();
-  new Menu();
   new Loading();
   new Scroller();
 
@@ -79,3 +80,7 @@ $(() => {
   console.log('');
 
 });
+
+$(window).on('load', () => {
+  new Menu();
+})

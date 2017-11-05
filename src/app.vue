@@ -8,7 +8,9 @@
 
       <global-menu></global-menu>
 
-      <router-view></router-view>
+      <transition name="page">
+        <router-view></router-view>
+      </transition>
 
       <global-footer></global-footer>
 
@@ -61,8 +63,3 @@ export default {
   // }
 }
 </script>
-
-<style lang="scss" scoped>
-
-
-</style>

@@ -25,7 +25,7 @@ export default new Router({
       component: detail
     }
   ],
-  scrollBehavior (to, from, savedPosition) { // gives normal scolling behavior through app
+  scrollBehavior (to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
     } else {

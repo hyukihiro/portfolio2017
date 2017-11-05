@@ -4,6 +4,8 @@ export function date() {
   let time = new Date();
   let hour = time.getHours();
   let minute = time.getMinutes();
+  let DOMhour = document.getElementsByClassName('hour')
+  let DOMminute = document.getElementsByClassName('minute')
 
   if ( minute < 10 ) {
     minute = '0' + minute;
@@ -13,8 +15,8 @@ export function date() {
     hour = '0' + hour;
   }
 
-  $('.meta__item .minute').html(hour);
-  $('.meta__item .second').html(minute);
+  DOMhour.textContent = hour;
+  DOMminute.textContent = minute;
 
   // setInterval(function() {
   //   date();

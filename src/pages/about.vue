@@ -7,19 +7,19 @@
             <li class="meta__item">Shiga</li>
             <li class="meta__item">Japan</li>
             <li class="meta__item">
-              <span class="minute"></span>
+              <span class="hour">{{ hour }}</span>
               <span class="colon">:</span>
-              <span class="second"></span>
+              <span class="minute">{{ minute }}</span>
             </li>
           </ul>
           <ul class="meta__cat meta__cat--weather">
-            <li class="meta__item">Clear Sky</li>
+            <li class="meta__item">{{ weather }}</li>
           </ul>
         <!-- meta --></div>
         <div class="prof">
           <div class="prof__inner">
             <p class="txt">
-              Hello,  I am Yukihiro Hoshide,  a Front-end developer born in Japan. <br>
+              Hello, I am Yukihiro Hoshide, a Front-end developer born in Japan.<br>
               I am Interested in solving business problems by web technology and<br>
               acquiring new technology, language and application to create an impressive expression.
             </p>
@@ -86,13 +86,8 @@
 
 // js
 import $ from 'jquery';
+import axios from 'axios';
 import { date, weather } from '../assets/js/_module/_meta';
-
-$(() => {
-  date();
-  weather();
-});
-
 
 export default {
   name: 'about',
@@ -100,6 +95,43 @@ export default {
   data() {
     return {
       posts: []
+    }
+  },
+
+  created() {
+    this.date();
+    this.weather();
+  },
+
+  methods: {
+    date: function() {
+      let time = new Date();
+      let hour = time.getHours();
+      let minute = time.getMinutes();
+      let DOMhour = document.querySelectorAll('.meta__item .hour')
+      let DOMminute = document.querySelectorAll('.meta__item .minute')
+
+      if ( minute < 10 ) {
+        minute = '0' + minute;
+      }
+
+      if ( hour < 10 ) {
+        hour = '0' + hour;
+      }
+
+      this.hour = hour;
+      this.minute = minute;
+    },
+
+    weather: function() {
+      axios.get("http://api.openweathermap.org/data/2.5/weather?id=1853909&units=metric&appid=2f890cb41f31cbbba489407e0936a6d5")
+      .then((resp) => {
+        this.weatherMain = resp.data.weather[0].main;
+        console.log(this);
+      })
+      .catch((err) => {
+        console.log(err)
+      })
     }
   }
 }

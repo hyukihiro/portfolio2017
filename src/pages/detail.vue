@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper detail">
-    <main class="main">
+    <main class="main" v-if="single[0]">
       <div class="fv">
         <div class="img"><img :src="single[0].featured_image.src"></div>
         <h2 class="project-name js-proj-name"><span>{{ single[0].acf.project_name }}</span></h2>
@@ -84,6 +84,7 @@ import { HTTP } from '../environment';
 // js
 import $ from 'jquery';
 import Works from '../assets/js/_module/_works';
+import Scroller from '../assets/js/_module/_scroller';
 
 export default {
   name: 'detail',
@@ -96,6 +97,7 @@ export default {
 
   created() {
     new Works();
+    new Scroller();
     this.fetchData();
   },
 
@@ -134,15 +136,19 @@ export default {
     z-index: 0;
 
     .img {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
       position: relative;
     }
 
     .img img {
       position: absolute;
-      left: 0;
+      left: 50%;
       top: 0;
-      width: auto;
-      height: 70vh;
+      width: 100vw;
+      height: auto;
+      transform: translateX(-50%);
     }
 
     .project-name {
@@ -263,7 +269,9 @@ export default {
       width: 100%;
       height: 1px;
       background: #000;
-      transform: translateX(0);
+      transform: scaleX(0);
+      transition: transform .5s cubic-bezier(.19, 1, .22, 1);
+      transform-origin: 100% 50%;
     }
 
     &__list {
@@ -302,21 +310,23 @@ export default {
 
 /* animation
 --------------------------------------------------------------------------*/
-.detail .fv .scroll__txt span {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.detail .fv .scroll__line {
-  opacity: 0;
-  transform: translateY(40px);
-}
+// .detail .fv .scroll__txt span {
+//   opacity: 0;
+//   transform: translateY(20px);
+// }
+//
+// .detail .fv .scroll__line {
+//   opacity: 0;
+//   transform: translateY(40px);
+// }
 
 
 /* hover
 --------------------------------------------------------------------------*/
-.detail .details__txt a:hover::after {
-  transform: translateX(1);
+.mode-pc .detail .details__txt a:hover::after {
+  transform: scaleX(1);
+  transition: transform .5s cubic-bezier(.19, 1, .22, 1);
+  transform-origin: 0 50%;
 }
 
 /* xl
@@ -344,12 +354,12 @@ export default {
 
     .fv {
       .project-name {
-        font-size: 4.0rem;
+        font-size: 3.0rem;
       }
 
       .img img {
-        left: 50%;
-        transform: translateX(-50%);
+        width: auto;
+        height: 100vh;
       }
 
       .scroll a {

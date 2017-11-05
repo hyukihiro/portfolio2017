@@ -4,7 +4,7 @@
     <main class="main">
       <ul class="m-lists" v-if="posts && posts.length">
         <li class="m-lists__item" v-for="post of posts"><a v-bind:href="'/#/' + post.slug">
-          <div class="image"><img :src="post._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url" alt=""></div>
+          <div class="image"><img :src="post.featured_image.src" alt=""></div>
           <div class="content">
             <div class="txt">
               <h2 class="name">{{post.title.rendered}}</h2>
@@ -42,24 +42,13 @@ export default {
 
   methods: {
     fetchData() {
-      if ( this.$route.params.id === undefined ) { // if there is no slug, we're at the home page so we need to fetch it
-        HTTP.get('wp-json/wp/v2/posts?_embed')
-        .then((resp) => {
-          this.posts = resp.data
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-
-      } else {
-        HTTP.get('wp-json/wp/v2/posts?_embed') // if we're not at the home page, then we grab the page via its slug
-        .then((resp) => {
-          this.posts = resp.data
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-      }
+      HTTP.get('wp-json/wp/v2/posts')
+      .then((resp) => {
+        this.posts = resp.data
+      })
+      .catch((err) => {
+        console.log(err)
+      })
     }
   }
 }
