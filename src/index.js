@@ -41,7 +41,7 @@ const app = new Vue({
     source: 'http://portfolio-wp.eggplant.work/',
     url: 'http://portfolio.eggplant.work/',
     posts: [],
-    weatherMain: 'clear'
+    weatherMain: ''
   },
 
   created(){
@@ -53,8 +53,13 @@ const app = new Vue({
     .catch(e => {
       this.errors.push(e)
     });
-
   },
+
+  methods: {
+    toggleMenu() {
+      alert('in');
+    }
+  }
 })
 
 $(() => {
