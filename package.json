@@ -20,8 +20,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "webpack:build": "webpack",
-    "webpack:watch": "webpack -w -d",
+    "webpack:build": "webpack -d --config webpack.prod.js",
+    "webpack:watch": "webpack -w -d --config webpack.dev.js",
     "start": "run-p webpack:watch bs",
     "build:clean": "rimraf ./dist",
     "build:copy": "cpx \"./src/**/!(*.js|*.css|*.map|*.scss|*.png|*.jpg|*.svg|*.gif)\"  ./dist/",
@@ -30,7 +30,7 @@
     "bs": "browser-sync start --config bs-config.js",
     "lint:css": "stylelint src/assets/scss/**/*.scss",
     "lint:js": "eslint src/assets/js/**/*.js",
-    "production": "npm-run-all -s clean copy -p webpack:build"
+    "production": "run-s build:clean build:copy -s webpack:build"
   },
   "dependencies": {
     "createjs-easeljs": "^0.8.2",
@@ -69,6 +69,7 @@
     "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.2",
     "webpack": "^3.6.0",
+    "webpack-merge": "^4.1.1",
     "webpack-notifier": "^1.5.0"
   }
 }

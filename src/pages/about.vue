@@ -128,7 +128,6 @@ export default {
       .then((resp) => {
         let _this = this;
         _this.weatherMain = resp;
-        console.log(_this.weatherMain.data.list[0].weather[0].main);
       })
       .catch((err) => {
         console.log(err)
