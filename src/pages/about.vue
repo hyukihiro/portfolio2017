@@ -12,16 +12,19 @@
               <span class="minute">{{ minute }}</span>
             </li>
           </ul>
+          <ul class="meta__cat meta__cat--weather" v-if="weatherMain">
+            <li class="meta__item">{{ weatherMain.data.list[0].weather[0].main }}</li>
+          </ul>
         <!-- meta --></div>
         <div class="prof">
           <div class="prof__inner">
             <p class="txt">
               Hello, I am Yukihiro Hoshide, a Front-end developer born in Japan.<br>
-              I am Interested in solving business problems by web technology and<br>
-              acquiring new technology, language and application to create an impressive expression.
+              I am Interested in solving business problems by web technology and<br class="u-pc">
+              acquiring new technology to create an impressive expression.
             </p>
             <p class="txt">
-              I want to work in a foreign country because I think environmental change is most effective way to <br> improve my mental strength and web development skills. now is the time to change and put into action.
+              I want to work in a foreign country because I think environmental change is most effective way to <br class="u-pc"> improve my mental strength and web development skills. now is the time to change and put into action.
             </p>
             <ul class="sns">
               <li><a href="https://github.com/hyukihiro" target="_blank">Github</a></li>
@@ -90,7 +93,8 @@ export default {
 
   data() {
     return {
-      posts: []
+      posts: [],
+      weatherMain: ''
     }
   },
 
@@ -120,9 +124,11 @@ export default {
     },
 
     weather: function() {
-      axios.get("http://api.openweathermap.org/data/2.5/weather?id=1853909&units=metric&appid=2f890cb41f31cbbba489407e0936a6d5")
+      axios.get("http://api.openweathermap.org/data/2.5/forecast?id=1853909&units=metric&appid=2f890cb41f31cbbba489407e0936a6d5")
       .then((resp) => {
-        this.weatherMain = resp.data.weather[0].main;
+        let _this = this;
+        _this.weatherMain = resp;
+        console.log(_this.weatherMain.data.list[0].weather[0].main);
       })
       .catch((err) => {
         console.log(err)
