@@ -2,10 +2,11 @@ const webpack = require('webpack');
 const path = require('path');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+require("babel-polyfill");
 
 module.exports = {
   entry: {
-  	"vender": ['jquery', 'vue', 'createjs-easeljs', 'underscore'],
+  	"vender": ['jquery', 'vue', 'createjs-easeljs', 'underscore', 'babel-polyfill'],
   	"app": './src/index.js',
   },
   output: {

@@ -80,7 +80,6 @@ export default {
   &__item {
     position: relative;
     width: 50%;
-    padding-top: 26.25%;
     margin-bottom: 50px;
 
     .image {
@@ -90,6 +89,12 @@ export default {
       overflow: hidden;
       width: 100%;
       height: 100%;
+    }
+
+    a::after {
+      content: "";
+      display: block;
+      padding-top: 45%;
     }
 
     .image > img {
@@ -134,7 +139,7 @@ export default {
 
 /* hover
 --------------------------------------------------------------------------*/
-.mode-pc .main .m-lists .content:hover {
+.mode-pc .main .m-lists a:hover .content {
   opacity: 1;
   transition: all .5s cubic-bezier(0.19, 1, 0.22, 1);
   backface-visibility: hidden;

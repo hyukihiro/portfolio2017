@@ -4,7 +4,6 @@ import $ from 'jquery';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
-import axios from'axios';
 import router from './router'
 
 // js

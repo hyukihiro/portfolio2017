@@ -60,14 +60,12 @@
 import { HTTP } from '../environment';
 
 // js
-import $ from 'jquery';
-
 export default {
   name: 'detail',
 
   data() {
     return {
-      single: []
+      single: {}
     }
   },
 
@@ -76,8 +74,14 @@ export default {
   },
 
   watch: {
-    '$route': 'fetchData'
+    '$route' (to, from) {
+      this.fetchData();
+    }
   },
+
+  // beforeRouteUpdate (to, from, next) {
+  //   console.log('in from beforeRouteUpdate');
+  // },
 
   methods: {
     fetchData() {

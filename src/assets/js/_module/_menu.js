@@ -21,7 +21,7 @@ export default class Menu {
     this._$trigger.on('click', this._onClick.bind(this));
     this._$list.on('click', this._onClick.bind(this));
     this._$logo.on('click', this._onClickLogo.bind(this));
-    $(document).on('click', '.js-link', this._onClickLink.bind(this));
+    $(document).on('click', '.js-link a', this._onClickLink.bind(this));
   }
 
   _onClick() {
