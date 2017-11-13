@@ -27,6 +27,7 @@
               I want to work in a foreign country because I think environmental change is most effective way to <br class="u-pc"> improve my mental strength and web development skills. now is the time to change and put into action.
             </p>
             <ul class="sns">
+              <li><a href="http://blog.eggplant.work/author/yukihiro/" target="_blank">Blog</a></li>
               <li><a href="https://github.com/hyukihiro" target="_blank">Github</a></li>
               <li><a href="https://www.linkedin.com/in/yukihiro-hoshide-b50759149/" target="_blank">LinkedIn</a></li>
               <li><a href="https://codepen.io/yukihiro_hoshide/" target="_blank">Codepen</a></li>
@@ -269,13 +270,15 @@ export default {
     .sns {
       padding-top: 30px;
       justify-content: space-between;
+      flex-wrap: wrap;
 
       li {
         font-size: 1.2rem;
+        width: 50%;
       }
 
       li + li {
-        padding-left: 10px;
+        padding-left: 0;
       }
     }
 

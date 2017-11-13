@@ -333,6 +333,8 @@ export default {
     .fv {
       .project-name {
         font-size: 3.0rem;
+        left: 20px;
+        width: 90%;
       }
 
       .img img {

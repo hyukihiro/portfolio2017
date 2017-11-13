@@ -176,6 +176,10 @@ export default {
         height: auto;
       }
 
+      a::after {
+        padding-top: 0;
+      }
+
       .content {
         width: calc(100% - 20px);
         height: calc(100% - 20px);

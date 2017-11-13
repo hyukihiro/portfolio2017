@@ -18,14 +18,12 @@ body {
 	width: 100%;
 	color: #343a40;
 	word-wrap: break-word;
-	word-break: break-all;
 	font-size: 1.3rem;
 	font-family: 'Poppins', Helvetica Neue, Helvetica, Hiragino Sans, 'ヒラギノ角ゴ ProN W3', Hiragino Kaku Gothic ProN, "メイリオ", Meiryo, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	line-height: 2;
   letter-spacing: 1px;
-  word-wrap: break-word;
 
   @include mq(pc) {
     font-size: 1.6rem;

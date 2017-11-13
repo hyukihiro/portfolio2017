@@ -61,6 +61,6 @@ $(() => {
   new Menu();
 
   console.log("%cAll about this site, please check the repository below","padding:4px; background: #333; color: #fff");
-  console.log("%chttps://github.com/hyukihiro/portfolio2017.git","padding:4px; background: #333; color: #fff");
+  console.log("%chttps://github.com/hyukihiro/portfolio2017","padding:4px; background: #333; color: #fff");
   console.log("%cSpecial Thanks K.I and Y.W","padding:4px; background: #333; color: #fff");
 });

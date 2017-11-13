@@ -562,16 +562,20 @@
 --------------------------------------------------------------------------*/
 @include mq(sp) {
   .footer {
-    padding: 20px;
+    padding: 20px 30px;
+
 
     &__inner {
       flex-direction: column-reverse;
+      align-items: flex-start;
     }
 
     &__sns {
+      flex-wrap: wrap;
 
       .item {
-        padding: 0 10px;
+        padding: 0;
+        width: 50%;
       }
 
       .item a {
