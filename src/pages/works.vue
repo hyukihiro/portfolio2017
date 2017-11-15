@@ -3,7 +3,7 @@
 
     <main class="main">
       <ul class="m-lists" v-if="posts && posts.length">
-        <li class="m-lists__item" v-for="post of posts"><a v-bind:href="'/#/' + post.slug">
+        <li class="m-lists__item" v-for="post of posts"><router-link :to="{ path: '/' + post.slug}">
           <div class="image"><img :src="post.featured_image.src" alt=""></div>
           <div class="content">
             <div class="txt">
@@ -13,7 +13,7 @@
               </ul>
             </div>
           <!-- content --></div>
-        </a><!-- m-lists__item --></li>
+        </router-link><!-- m-lists__item --></li>
       <!-- lists --></ul>
     <!-- main --></main>
   </div>

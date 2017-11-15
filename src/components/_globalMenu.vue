@@ -3,9 +3,9 @@
     <div class="l-wrap menu__inner">
 
       <ul class="menu__lists" v-if="$root.posts && $root.posts.length">
-        <li class="menu__item js-link" v-for="post of $root.posts" v-on:click.native="toggleMenu"><a v-bind:href="'/#/' + post.slug">
+        <li class="menu__item js-link" v-for="post of $root.posts" v-on:click.native="toggleMenu"><router-link :to="{ path: '/' + post.slug}">
           {{ post.acf.project_name }}
-        </a><!-- m-lists__item --></li>
+        </router-link><!-- m-lists__item --></li>
       <!-- lists --></ul>
 
       <nav class="menu__navigation">
