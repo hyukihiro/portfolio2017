@@ -13,7 +13,7 @@
             </li>
           </ul>
           <ul class="meta__cat meta__cat--weather" v-if="weatherMain">
-            <li class="meta__item">{{ weatherMain.data.list[0].weather[0].main }}</li>
+            <li class="meta__item">{{ weatherMain.data.weather[0].main }}</li>
           </ul>
         <!-- meta --></div>
         <div class="prof">
@@ -46,11 +46,11 @@
               <ul class="items">
                 <li class="item">HTML5 / CSS3</li>
                 <li class="item">Sass / Less / Stylus</li>
-                <li class="item">Javascript / es2015</li>
-                <li class="item">pug / Handlebars</li>
+                <li class="item">Javascript / ES2015</li>
+                <li class="item">Pug / Handlebars</li>
                 <li class="item">Gulp / npm script / webpack</li>
-                <li class="item">Git / gitflow</li>
-                <li class="item">vue.js</li>
+                <li class="item">Git / Gitflow</li>
+                <li class="item">Vue.js</li>
                 <li class="item">Wordpress / WP REST API</li>
                 <li class="item"></li>
               </ul>
@@ -125,7 +125,7 @@ export default {
     },
 
     weather: function() {
-      axios.get("http://api.openweathermap.org/data/2.5/forecast?id=1853909&units=metric&appid=2f890cb41f31cbbba489407e0936a6d5")
+      axios.get("http://api.openweathermap.org/data/2.5/weather?lat=35&lon=136&units=metric&appid=2f890cb41f31cbbba489407e0936a6d5")
       .then((resp) => {
         let _this = this;
         _this.weatherMain = resp;
