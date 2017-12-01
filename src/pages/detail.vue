@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper detail">
+  <div class="wrapper detail js-container">
     <main class="main" v-if="single[0]">
       <div class="fv">
         <div class="img"><img :src="single[0].featured_image.src"></div>

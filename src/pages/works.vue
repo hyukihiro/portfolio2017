@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper works">
+  <div class="wrapper works js-container">
 
     <main class="main">
       <ul class="m-lists" v-if="posts && posts.length">

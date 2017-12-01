@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper about">
+  <div class="wrapper about js-container">
     <main class="main">
       <div class="introduction">
         <div class="meta">
@@ -52,7 +52,6 @@
                 <li class="item">Git / Gitflow</li>
                 <li class="item">Vue.js</li>
                 <li class="item">Wordpress / WP REST API</li>
-                <li class="item"></li>
               </ul>
             </li>
 
