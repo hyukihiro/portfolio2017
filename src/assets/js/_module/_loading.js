@@ -45,7 +45,7 @@ export default class Loading {
 			const ftl = new TimelineMax();
 			ftl.to( this._$mesaasge, 1, { x: 0, ease: props.ease}, 1)
 			ftl.to( this._$mesaasgeInner, 1, { delay: 0, x: 0, ease: props.ease}, 1)
-			ftl.staggerFrom( this._$mesaasgeText, 1, {x: '-500px', ease:Power2.easeOut}, -0.02, 1)
+			ftl.staggerFrom( this._$mesaasgeText, 1, {x: '-2vw', ease:Power2.easeOut}, -0.02, 1)
 			ftl.add('next')
 			ftl.staggerTo(this._$mesaasgeTextInner, 1.3, {yPercent: -120, delay: .3, ease:Power2.easeInOut}, 0.08, 'next');
 			ftl.to(this._$wrapper, 1.3, {opacity: 0, delay: .3, ease:Power4.easeIn}, 'next')

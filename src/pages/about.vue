@@ -48,7 +48,7 @@
                 <li class="item">Sass / Less / Stylus</li>
                 <li class="item">Javascript / ES2015</li>
                 <li class="item">Pug / Handlebars</li>
-                <li class="item">Gulp / npm script / webpack</li>
+                <li class="item">Gulp / npm scripts / webpack</li>
                 <li class="item">Git / Gitflow</li>
                 <li class="item">Vue.js</li>
                 <li class="item">Wordpress / WP REST API</li>
