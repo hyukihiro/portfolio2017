@@ -281,14 +281,19 @@
 /* animation
 --------------------------------------------------------------------------*/
 .menu {
-  height: 0;
   overflow: hidden;
-  transition: height 1s cubic-bezier(0.19, 1, 0.22, 1);
+  height: 0;
+  transition: height .5s cubic-bezier(0.19, 1, 0.22, 1) .2s;
 }
 
 .menu__navigation li {
   transform: translateY(20px);
   opacity: 0;
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.menu__item {
+  transform: translateX(-20px);
 }
 
 .menu__item a::after {
@@ -320,12 +325,19 @@
   background: #07677C;
 }
 
+.menu__lists .menu__item {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
 
 /* active
 --------------------------------------------------------------------------*/
 .is-menu-active .menu {
   height: 100vh;
-  transition: height .5s cubic-bezier(0.19, 1, 0.22, 1);
+  opacity: 1;
+  transition: height .5s cubic-bezier(0.19, 1, 0.22, 1) .2s, opacity .2s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .is-menu-active .menu__navigation li {
@@ -335,15 +347,15 @@
 }
 
 .is-menu-active .menu__navigation li:nth-child(1) {
-  transition-delay: .1s;
+  transition-delay: .3s;
 }
 
 .is-menu-active .menu__navigation li:nth-child(2) {
-  transition-delay: .2s;
+  transition-delay: .4s;
 }
 
 .is-menu-active .menu__navigation li:nth-child(3) {
-  transition-delay: .3s;
+  transition-delay: .5s;
 }
 
 .is-menu-active .menu__map::before,
@@ -358,6 +370,19 @@
 .is-menu-active .menu__map::after {
   transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1) .2s;
 }
+
+.is-menu-active .menu__lists {
+  opacity: 1;
+  transition: opacity .2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.is-menu-active .menu__item {
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+
 
 /* hover
 --------------------------------------------------------------------------*/

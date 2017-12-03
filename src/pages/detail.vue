@@ -52,7 +52,7 @@
       <!-- details --></div>
 
       <div class="site-flow">
-        <div class="item item--prev">
+        <div class="item item--prev" v-if="single[0].prev">
           <div class="img"><img :src="single[0].prev.featured_image_src"></div>
           <div class="bg"></div>
           <router-link :to="{ path: '/' + single[0].prev.post_name}">
@@ -60,7 +60,7 @@
             <p class="item__name">{{ single[0].prev.post_title }}</p>
           </router-link>
         <!-- prev --></div>
-        <div class="item item--next">
+        <div class="item item--next" v-if="single[0].next">
           <div class="img"><img :src="single[0].next.featured_image_src"></div>
           <div class="bg"></div>
           <router-link :to="{ path: '/' + single[0].next.post_name}">
@@ -277,8 +277,7 @@ export default {
   }
 
   .site-flow {
-    display: flex;
-    flex-wrap: wrap;
+    overflow: hidden;
 
     .item {
       overflow: hidden;
@@ -333,6 +332,14 @@ export default {
 
   // variation
   .site-flow {
+
+    .item--prev {
+      float: left;
+    }
+
+    .item--next {
+      float: right;
+    }
 
     .item--next a {
       align-items: flex-end;
@@ -463,6 +470,7 @@ export default {
     .site-flow {
 
       .item {
+        float: none;
         width: 100%;
       }
 
