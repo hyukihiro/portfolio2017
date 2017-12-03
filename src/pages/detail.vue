@@ -51,6 +51,25 @@
         <!-- details__wrap --></div>
       <!-- details --></div>
 
+      <div class="site-flow">
+        <div class="item item--prev">
+          <div class="img"><img :src="single[0].prev.featured_image_src"></div>
+          <div class="bg"></div>
+          <router-link :to="{ path: '/' + single[0].prev.post_name}">
+            <h3 class="item__hdg">Prev Project</h3>
+            <p class="item__name">{{ single[0].prev.post_title }}</p>
+          </router-link>
+        <!-- prev --></div>
+        <div class="item item--next">
+          <div class="img"><img :src="single[0].next.featured_image_src"></div>
+          <div class="bg"></div>
+          <router-link :to="{ path: '/' + single[0].next.post_name}">
+            <h3 class="item__hdg">Next Project</h3>
+            <p class="item__name">{{ single[0].next.post_title }}</p>
+          </router-link>
+        <!-- next --></div>
+      <!-- site-flow --></div>
+
     <!-- main --></main>
   </div>
 </template>
@@ -258,30 +277,65 @@ export default {
   }
 
   .site-flow {
+    display: flex;
+    flex-wrap: wrap;
+
+    .item {
+      overflow: hidden;
+      position: relative;
+      width: 50%;
+    }
+
+    .item .bg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, .8);
+      transition: background 1s cubic-bezier(.19, 1, .22, 1);
+    }
+
+    .item .img img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      pointer-events: none;
+      z-index: 0;
+      width: 100%;
+      height: auto;
+    }
+
 
     .item a {
-      width: 100%;
+      position: relative;
+      z-index: 3;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      align-items: flex-start;
       padding: 40px 80px;
-      font-size: 2.4rem;
+      font-size: 1.6rem;
+    }
+
+    .item__name, .item__hdg {
+      line-height: 1.2;
+      background: rgba(255, 255, 255, 0);
+      transition: background 1s cubic-bezier(.19, 1, .22, 1);
     }
 
     .item__name {
       font-weight: 500;
+      font-size: 2.0rem;
     }
   }
 
   // variation
   .site-flow {
 
-    .item--prev a {
-      background: #1363e6;
-    }
-
     .item--next a {
-      flex-direction: row-reverse;
-      background: #d8d8d8;
+      align-items: flex-end;
     }
   }
 }
@@ -299,6 +353,8 @@ export default {
 // }
 
 
+
+
 /* hover
 --------------------------------------------------------------------------*/
 .mode-pc .detail .details__txt a:hover::after {
@@ -306,6 +362,23 @@ export default {
   transition: transform .5s cubic-bezier(.19, 1, .22, 1);
   transform-origin: 0 50%;
 }
+
+.mode-pc .detail {
+  .site-flow {
+
+    .item:hover .bg {
+      background: rgba(216, 216, 216, 0);
+      transition: background 2s cubic-bezier(.19, 1, .22, 1);
+      backface-visibility: hidden;
+    }
+
+    .item:hover .item__name, .item:hover .item__hdg {
+      background: rgba(255, 255, 255, 1);
+      transition: background 1s cubic-bezier(.19, 1, .22, 1);
+    }
+  }
+}
+
 
 /* xl
 --------------------------------------------------------------------------*/
@@ -389,20 +462,27 @@ export default {
 
     .site-flow {
 
+      .item {
+        width: 100%;
+      }
+
+      .item + .item {
+        border-top: 1px solid #eee;
+      }
+
       .item a {
-        flex-direction: column;
         justify-content: space-between;
         align-items: center;
         padding: 20px;
         font-size: 1.8rem;
       }
-    }
 
-    // variation
-    .site-flow {
+      .item .item__hdg {
+        font-size: 1.4rem
+      }
 
-      .item--next a {
-        flex-direction: column;
+      .item .item__name {
+        font-size: 1.2rem
       }
     }
   }

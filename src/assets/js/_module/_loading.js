@@ -32,7 +32,7 @@ export default class Loading {
 		imagesLoaded(this._$body, function() {
 			controller.dispatchEvent({ type: 'domReady'});
 		})
-		TweenMax.set(this._$container, { y: 50, opacity:0 });
+		TweenMax.set(this._$container, { y: 50, opacity: 0 });
 	}
 
 	_handleEvents() {
@@ -47,9 +47,9 @@ export default class Loading {
 			ftl.to( this._$mesaasgeInner, 1, { delay: 0, x: 0, ease: props.ease}, 1)
 			ftl.staggerFrom( this._$mesaasgeText, 1, {x: '-2vw', ease:Power2.easeOut}, -0.02, 1)
 			ftl.add('next')
-			ftl.staggerTo(this._$mesaasgeTextInner, 1.3, {yPercent: -120, delay: .3, ease:Power2.easeInOut}, 0.08, 'next');
+			ftl.staggerTo(this._$mesaasgeTextInner, 1.3, {yPercent: -120, delay: .3, ease:Power2.easeInOut}, 0.04, 'next');
 			ftl.to(this._$wrapper, 1.3, {opacity: 0, delay: .3, ease:Power4.easeIn}, 'next')
-			ftl.to(this._$container, 1, {opacity: 1, y: 0, delay: -.8, ease:Power4.easeOut, onComplete:function() {
+			ftl.to(this._$container, 1, {opacity: 1, y: 0, delay: -.8, ease:props.easeBack, onComplete:function() {
 				document.querySelector('.wrapper').removeChild(_this._$wrapper);
 			}})
 		}, 1000);
