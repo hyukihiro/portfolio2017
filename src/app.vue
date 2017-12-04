@@ -19,8 +19,6 @@
 </template>
 
 <script>
-// setting
-import { HTTP } from './environment';
 
 export default {
   name: 'app',

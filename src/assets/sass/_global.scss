@@ -535,11 +535,13 @@ $max-num: 10;
   &__message p {
     overflow: hidden;
     padding-left: 8.333333vw;
+    line-height: 1;
   }
 
   &__message p span {
     display: block;
     font-size: 2vw;
+    line-height: 2;
   }
 
   .message__inner  {
@@ -660,5 +662,27 @@ $max-num: 10;
         font-size: 1.2rem;
       }
     }
+  }
+}
+
+
+// --------------------------------------------------------------------------
+//  loading
+// --------------------------------------------------------------------------
+.g-mask__item {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  &--0 {
+    z-index: 100;
+    background: #000;
+  }
+
+  &--1 {
+    z-index: 99;
+    background: #111;
   }
 }

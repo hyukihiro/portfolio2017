@@ -5,6 +5,18 @@
         <div class="img"><img :src="single[0].featured_image.src"></div>
         <h2 class="project-name js-proj-name"><span>{{ single[0].acf.project_name }}</span></h2>
         <div class="bg" :style="{ 'background-color': single[0].acf.key_color }"></div>
+
+        <div class="scroll">
+          <span class="scroll__txt">
+            <span>S</span>
+            <span>c</span>
+            <span>r</span>
+            <span>o</span>
+            <span>l</span>
+            <span>l</span>
+          </span>
+          <span class="scroll__line"></span>
+        <!-- scroll --></div>
       <!-- fv --></div>
 
       <div class="details js-scroll-target" id="content">
@@ -79,6 +91,8 @@
 import { HTTP } from '../environment';
 
 // js
+import Works from '../assets/js/_module/_works';
+
 export default {
   name: 'detail',
 
@@ -90,17 +104,15 @@ export default {
 
   created() {
     this.fetchData();
+    new Works();
   },
 
   watch: {
     '$route' (to, from) {
       this.fetchData();
+      new Works();
     }
   },
-
-  // beforeRouteUpdate (to, from, next) {
-  //   console.log('in from beforeRouteUpdate');
-  // },
 
   methods: {
     fetchData() {
@@ -164,7 +176,7 @@ export default {
       display: inline-block;
     }
 
-    .scroll a {
+    .scroll {
       position: absolute;
       left: 50%;
       bottom: 0;
@@ -349,17 +361,15 @@ export default {
 
 /* animation
 --------------------------------------------------------------------------*/
-// .detail .fv .scroll__txt span {
-//   opacity: 0;
-//   transform: translateY(20px);
-// }
-//
-// .detail .fv .scroll__line {
-//   opacity: 0;
-//   transform: translateY(40px);
-// }
+.detail .fv .scroll__txt span {
+  opacity: 0;
+  transform: translateY(20px);
+}
 
-
+.detail .fv .scroll__line {
+  opacity: 0;
+  transform: translateY(40px);
+}
 
 
 /* hover
