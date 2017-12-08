@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import {TweenMax} from 'gsap';
 
 let props = {
@@ -7,9 +6,9 @@ let props = {
 
 export default class Works {
   constructor() {
-    this._$text = $('.scroll__txt span');
-    this._$line = $('.scroll__line');
-    this._$projName = $('.js-proj-name span');
+    this._$text = document.querySelectorAll('.scroll__txt span');
+    this._$line = document.querySelectorAll('.scroll__line');
+    this._$projName = document.querySelectorAll('.js-proj-name span');
 
 		this._init();
   }

@@ -1,8 +1,6 @@
-// import $ from 'jquery';
 import controller from './_controller';
 import TweenMax from 'gsap';
 const imagesLoaded = require('imagesloaded');
-// imagesLoaded.makeJQueryPlugin($);
 
 let props = {
 	delay: .4,

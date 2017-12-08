@@ -23,6 +23,10 @@
 // setting
 import { HTTP } from '../environment';
 
+// script
+import Project from '../assets/js/_module/_project/project';
+
+
 export default {
   name: 'works',
 
@@ -34,6 +38,7 @@ export default {
 
   created() {
     this.fetchData();
+    new Project();
   },
 
   watch: {
