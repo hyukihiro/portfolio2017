@@ -1,7 +1,7 @@
 'use strict';
 
-const events = {
+const message = {
   onWheel: new Event('onWheel')
 };
 
-module.exports = events;
+module.exports = message;

@@ -24,8 +24,10 @@
 import { HTTP } from '../environment';
 
 // script
-import Project from '../assets/js/_module/_project/project';
-
+import Project from '../assets/js/_module/_project/_project';
+import message from '../assets/js/_module/_message';
+import eventFire from '../assets/js/_module/_project/_eventFire';
+import state from '../assets/js/_module/_state';
 
 export default {
   name: 'works',
@@ -38,6 +40,7 @@ export default {
 
   created() {
     this.fetchData();
+    new eventFire();
     new Project();
   },
 
@@ -49,7 +52,7 @@ export default {
     fetchData() {
       HTTP.get('wp-json/wp/v2/posts')
       .then((resp) => {
-        this.posts = resp.data
+        this.posts = resp.data;
       })
       .catch((err) => {
         console.log(err)
