@@ -1,7 +1,7 @@
 'use strict';
 
 const message = {
-  onWheel: new Event('onWheel')
+  PROJECT_CHANGE: 'PROJECT_CHANGE'
 };
 
 module.exports = message;
