@@ -65,7 +65,6 @@ class EventFire {
    *　前の案件に移動
    */
   _previousProject() {
-    console.log(Emitter);
     State.currentProjectIndex = (State.currentProjectIndex > 0) ? State.currentProjectIndex - 1 : State.projectsNb - 1;
     Emitter.emit(PROJECT_CHANGE, {
       currentProject: State.projects[State.currentProjectIndex],

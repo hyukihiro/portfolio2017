@@ -4,7 +4,7 @@
       <div class="introduction">
         <div class="meta">
           <ul class="meta__cat meta__cat--geo">
-            <li class="meta__item">Shiga</li>
+            <li class="meta__item">Tokyo</li>
             <li class="meta__item">Japan</li>
             <li class="meta__item">
               <span class="hour">{{ hour }}</span>
@@ -124,7 +124,7 @@ export default {
     },
 
     weather: function() {
-      axios.get("http://api.openweathermap.org/data/2.5/weather?lat=35&lon=136&units=metric&appid=2f890cb41f31cbbba489407e0936a6d5")
+      axios.get("http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&units=metric&appid=2f890cb41f31cbbba489407e0936a6d5")
       .then((resp) => {
         let _this = this;
         _this.weatherMain = resp;
