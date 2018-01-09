@@ -25,6 +25,7 @@ import { HTTP } from '../environment';
 
 // script
 import eventFire from '../assets/js/_module/_project/_eventFire';
+import Project from '../assets/js/_module/_project/_project';
 
 export default {
   name: 'works',
@@ -38,6 +39,7 @@ export default {
   created() {
     this.fetchData();
     new eventFire();
+    new Project();
   },
 
   watch: {

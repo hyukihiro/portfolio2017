@@ -7,15 +7,15 @@ import {
 
 class Project {
   constructor() {
-    this.init();
+    this._handleEvents();
   }
 
-  init() {
+  _handleEvents() {
     Emitter.on(PROJECT_CHANGE, this.enterAnimation.bind(this));
   }
 
   enterAnimation() {
-    console.log(Emitter);
+    console.dir(Emitter);
   }
 }
 
