@@ -11,11 +11,11 @@ class Project {
   }
 
   _handleEvents() {
-    Emitter.on(PROJECT_CHANGE, this.enterAnimation.bind(this));
+    Emitter.on(PROJECT_CHANGE, this.onProjectChange.bind(this));
   }
 
-  enterAnimation() {
-    console.dir(Emitter);
+  onProjectChange({currentProject, direction}) {
+    console.log(currentProject, direction);
   }
 }
 
